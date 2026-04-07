@@ -69,6 +69,26 @@ body {
   border-color: rgba(142, 110, 245, 0.38) !important;
 }
 
+/* Quita el recuadro del contenido expandido en acordeones */
+.accordion {
+  border: 0 !important;
+  background: transparent !important;
+  box-shadow: none !important;
+}
+
+.accordion-top {
+  background: linear-gradient(180deg, var(--bg-card), #0d0e14) !important;
+  border: 1px solid var(--stroke-soft) !important;
+}
+
+.accordion-bottom,
+.accordion-bottom-wrap {
+  border: 0 !important;
+  outline: 0 !important;
+  box-shadow: none !important;
+  background: transparent !important;
+}
+
 /* Separadores suaves */
 .block-divider,
 .navbar-list-divider {
