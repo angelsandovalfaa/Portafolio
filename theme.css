@@ -239,6 +239,42 @@ a.w-webflow-badge,
   justify-self: end;
 }
 
+/* Footer centrado y sin desalineaciones */
+.footer-meta-list {
+  display: flex !important;
+  align-items: center !important;
+  justify-content: center !important;
+  width: 100% !important;
+}
+
+.footer-meta-socials {
+  display: none !important;
+}
+
+.footer-meta-info {
+  display: flex !important;
+  align-items: center !important;
+  justify-content: center !important;
+  flex: 1 1 auto !important;
+  width: 100% !important;
+  margin: 0 !important;
+  text-align: center !important;
+}
+
+.footer-meta-info > div {
+  width: 100% !important;
+  text-align: center !important;
+}
+
+/* Quita la línea horizontal del footer */
+.footer,
+.footer-meta,
+.footer-meta-list {
+  border-top: 0 !important;
+  border-bottom: 0 !important;
+  box-shadow: none !important;
+}
+
 .map-info-item.is-last .html-embed {
   display: flex;
   align-items: center;
