@@ -8,16 +8,14 @@
     return;
   }
 
-  window.jQuery('[data-click="faq"]').off('click.faq').on('click.faq', function () {
-    var $current = window.jQuery(this);
+  window.jQuery(document)
+    .off('click.faq', '[data-click="faq"]')
+    .on('click.faq', '[data-click="faq"]', function () {
+      var $current = window.jQuery(this);
+      window.jQuery('[data-click="faq"].open').not($current).removeClass('open');
+      $current.toggleClass('open');
+    });
 
-    if (!$current.is('.open')) {
-      window.jQuery('[data-click="faq"].open').each(function (_idx, item) {
-        item.click();
-      });
-      $current.addClass('open');
-    } else {
-      $current.removeClass('open');
-    }
-  });
+  // No abrir ningún item por defecto.
+  window.jQuery('[data-click="faq"]').removeClass('open');
 })();

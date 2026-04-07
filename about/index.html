@@ -193,23 +193,11 @@ document.addEventListener("DOMContentLoaded", () => {
 noise();</script>
 <script>
 $(document).ready(function() {
-  // Open the first FAQ item by default
-  $('[data-click="faq"]:first').addClass('open');
-
-  // Trigger click event on the first FAQ item
-  $('[data-click="faq"]:first').click();
-
-  // Add click event listener to toggle the 'open' class
-  $('[data-click="faq"]').click(function(){
-    if(!$(this).is('.open')){
-      $('[data-click="faq"].open').each((i, item)=>{
-        item.click();
-      });
-      $(this).addClass('open');    
-    }
-    else{
-      $(this).removeClass('open');
-    }
+  // FAQ: no abrir ninguno por defecto. Solo abre/cierra el item clickeado.
+  $(document).off('click.faq', '[data-click="faq"]').on('click.faq', '[data-click="faq"]', function () {
+    const $current = $(this);
+    $('[data-click="faq"].open').not($current).removeClass('open');
+    $current.toggleClass('open');
   });
 });
 </script>
