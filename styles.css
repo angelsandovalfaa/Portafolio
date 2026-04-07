@@ -1,0 +1,11 @@
+/* =========================================================
+   LEGACY STYLES ENTRY
+   Este archivo queda reservado para estilos experimentales
+   o páginas nuevas fuera del layout principal de Webflow.
+   ========================================================= */
+
+/* Estilo base de respaldo (no interfiere con theme.css). */
+body {
+  margin: 0;
+  padding: 0;
+}
