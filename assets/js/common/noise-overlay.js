@@ -1,20 +1,10 @@
-/* =========================================================
-   NOISE OVERLAY (OPCIONAL)
-   Genera ruido animado sobre un canvas #noise.
-   Por rendimiento está desactivado por defecto.
-   ========================================================= */
 (function () {
-  var ENABLE_NOISE = false;
-  if (!ENABLE_NOISE) {
-    return;
-  }
-
-  var canvas = document.getElementById('noise');
+  var canvas = document.getElementById("noise");
   if (!canvas) {
     return;
   }
 
-  var ctx = canvas.getContext('2d');
+  var ctx = canvas.getContext("2d");
   var wWidth;
   var wHeight;
   var noiseData = [];
@@ -27,7 +17,7 @@
     var len = buffer32.length;
 
     for (var i = 0; i < len; i++) {
-      if (Math.random() < 0.06) {
+      if (Math.random() < 0.1) {
         buffer32[i] = 0xff000000;
       }
     }
@@ -36,7 +26,7 @@
   }
 
   function paintNoise() {
-    frame = frame === 5 ? 0 : frame + 1;
+    frame = frame === 9 ? 0 : frame + 1;
     ctx.putImageData(noiseData[frame], 0, 0);
   }
 
@@ -44,7 +34,7 @@
     paintNoise();
     loopTimeout = window.setTimeout(function () {
       window.requestAnimationFrame(loop);
-    }, 1000 / 12);
+    }, 1000 / 25);
   }
 
   function setup() {
@@ -54,7 +44,7 @@
     canvas.height = wHeight;
     noiseData = [];
 
-    for (var i = 0; i < 6; i++) {
+    for (var i = 0; i < 10; i++) {
       createNoise();
     }
 
@@ -62,13 +52,17 @@
   }
 
   var resizeThrottle;
-  window.addEventListener('resize', function () {
-    window.clearTimeout(resizeThrottle);
-    resizeThrottle = window.setTimeout(function () {
-      window.clearTimeout(loopTimeout);
-      setup();
-    }, 200);
-  }, false);
+  window.addEventListener(
+    "resize",
+    function () {
+      window.clearTimeout(resizeThrottle);
+      resizeThrottle = window.setTimeout(function () {
+        window.clearTimeout(loopTimeout);
+        setup();
+      }, 200);
+    },
+    false
+  );
 
   setup();
 })();

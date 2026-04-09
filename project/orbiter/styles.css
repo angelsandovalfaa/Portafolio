@@ -1,16 +1,5 @@
-/* =========================================================
-   LEGACY STYLES ENTRY
-   Este archivo queda reservado para estilos experimentales
-   o paginas nuevas fuera del layout principal de Webflow.
-   ========================================================= */
-
-/* Estilo base de respaldo (no interfiere con theme.css). */
-body {
-  margin: 0;
-  padding: 0;
-}
-
 /* Estilos de pagina modularizados (extraidos desde index.html) */
+
 body {
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
@@ -62,3 +51,4 @@ html {
   pointer-events: none;
   opacity: 0.02;
 }
+
