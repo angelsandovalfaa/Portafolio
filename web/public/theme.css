@@ -1,0 +1,282 @@
+/* =========================================================
+   THEME GLOBAL DEL PORTAFOLIO
+   Este archivo define la paleta oscura y estilos compartidos.
+   ========================================================= */
+
+/* Variables de color reutilizables en todo el sitio */
+:root {
+  --bg-black: #060608;
+  --bg-elev: #0d0d12;
+  --bg-card: #111119;
+  --text-main: #f2f3f7;
+  --text-soft: #b7b9c8;
+  --accent: #7f5af0;
+  --accent-soft: rgba(127, 90, 240, 0.22);
+  --stroke-soft: rgba(138, 111, 220, 0.22);
+}
+
+/* Fondo base del documento */
+html,
+body {
+  background: var(--bg-black) !important;
+  color: var(--text-main) !important;
+}
+
+/* Gradiente general para que predomine el negro */
+body {
+  background-image: linear-gradient(180deg, #060608 0%, #07070a 45%, #060608 100%) !important;
+}
+
+/* Contenedores transparentes para que el fondo global sea visible */
+.layout,
+.main,
+.container,
+.section-block,
+.footer,
+.sidebar-content {
+  background: transparent !important;
+}
+
+/* Mantiene secciones principales por encima de overlays decorativos */
+.main .section-block,
+.main .block-divider {
+  position: relative;
+  z-index: 4;
+}
+
+/* Fondo y borde de sidebar */
+.sidebar,
+.sidebar-bg-tablet,
+.sidebar-navbar-tablet {
+  background: linear-gradient(180deg, #08080b, #0a0a0f) !important;
+  border-right: 1px solid var(--stroke-soft) !important;
+}
+
+/* Tarjetas y bloques con apariencia uniforme */
+.card,
+.accordion,
+.contact-card-square,
+.map-info,
+.testimonial-card {
+  background: linear-gradient(180deg, var(--bg-card), #0d0e14) !important;
+  border: 1px solid var(--stroke-soft) !important;
+}
+
+/* Realce visual al pasar el cursor */
+.card:hover,
+.accordion:hover,
+.testimonial-card:hover {
+  border-color: rgba(142, 110, 245, 0.38) !important;
+}
+
+/* Quita el recuadro del contenido expandido en acordeones */
+.accordion {
+  border: 0 !important;
+  background: transparent !important;
+  box-shadow: none !important;
+}
+
+.accordion-top {
+  background: linear-gradient(180deg, var(--bg-card), #0d0e14) !important;
+  border: 1px solid var(--stroke-soft) !important;
+}
+
+.accordion-bottom,
+.accordion-bottom-wrap {
+  border: 0 !important;
+  outline: 0 !important;
+  box-shadow: none !important;
+  background: transparent !important;
+}
+
+/* Separadores suaves */
+.block-divider,
+.navbar-list-divider {
+  background: linear-gradient(90deg, transparent, rgba(138, 111, 220, 0.26), transparent) !important;
+  opacity: 0.85;
+}
+
+/* Punto de títulos de sección */
+.content-title-dot {
+  background: var(--accent) !important;
+  box-shadow: 0 0 0 6px rgba(127, 90, 240, 0.15);
+}
+
+/* Estado OpenToWork con punto verde animado */
+.availability-dot {
+  width: 7px !important;
+  height: 7px !important;
+  border-radius: 50% !important;
+  background: #22c55e !important;
+  box-shadow: 0 0 0 4px rgba(34, 197, 94, 0.22) !important;
+  animation: opentowork-pulse 1.9s ease-in-out infinite;
+}
+
+/* Alineación del bloque OpenToWork + botón lateral */
+.sidebar-controls {
+  display: flex !important;
+  align-items: center !important;
+}
+
+.sidebar-controls-wrap {
+  width: 100% !important;
+  display: flex !important;
+  align-items: center !important;
+  justify-content: center !important;
+  gap: 25px !important;
+}
+
+.availability-wrap {
+  display: inline-flex !important;
+  align-items: center !important;
+  justify-content: center !important;
+  min-height: 40px !important;
+  margin: 0 !important;
+}
+
+.availability-wrap .caption {
+  line-height: 1 !important;
+}
+
+.sidebar-controls-wrap .button {
+  min-height: 40px !important;
+  display: inline-flex !important;
+  align-items: center !important;
+  justify-content: center !important;
+  margin: 0 !important;
+}
+
+/* Tipografías secundarias */
+.text-lead,
+.caption,
+.card-tag,
+.card-heading.is-text,
+.footer-meta-info,
+.sidebar-header-title,
+.testimonial-footer {
+  color: var(--text-soft) !important;
+}
+
+/* Tipografías principales */
+h1,
+h2,
+h3,
+.card-heading,
+.sidebar-header-name,
+.content-title,
+.testimonial-quote {
+  color: var(--text-main) !important;
+}
+
+/* Botones con paleta violeta */
+.button,
+.button-small {
+  background: linear-gradient(180deg, rgba(127, 90, 240, 0.25), rgba(72, 45, 138, 0.34)) !important;
+  border: 1px solid rgba(148, 118, 246, 0.45) !important;
+  color: var(--text-main) !important;
+}
+
+.button:hover,
+.button-small:hover {
+  background: linear-gradient(180deg, rgba(140, 102, 247, 0.32), rgba(84, 55, 156, 0.44)) !important;
+}
+
+/* Estados de navegación lateral */
+.navbar-link-active-bg {
+  background: linear-gradient(180deg, rgba(120, 84, 232, 0.24), rgba(64, 43, 121, 0.28)) !important;
+}
+
+.navbar-link-hover-bg {
+  background: rgba(127, 90, 240, 0.14) !important;
+}
+
+/* Animación pulso del estado disponible */
+@keyframes opentowork-pulse {
+  0% {
+    transform: scale(1);
+    box-shadow: 0 0 0 0 rgba(34, 197, 94, 0.45), 0 0 0 4px rgba(34, 197, 94, 0.20);
+  }
+  70% {
+    transform: scale(1.07);
+    box-shadow: 0 0 0 7px rgba(34, 197, 94, 0), 0 0 0 4px rgba(34, 197, 94, 0.14);
+  }
+  100% {
+    transform: scale(1);
+    box-shadow: 0 0 0 0 rgba(34, 197, 94, 0), 0 0 0 4px rgba(34, 197, 94, 0.20);
+  }
+}
+
+/* Oculta badge externo de Webflow */
+.w-webflow-badge,
+a.w-webflow-badge,
+.w-webflow-badge * {
+  display: none !important;
+  visibility: hidden !important;
+  opacity: 0 !important;
+  pointer-events: none !important;
+}
+
+/* Link de WhatsApp con ícono */
+.wa-link {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.45rem;
+}
+
+.wa-icon {
+  width: 30px;
+  height: 25px;
+  flex: 0 0 45px;
+}
+
+/* Alinea la columna derecha (Go / WhatsApp) en la tarjeta de contacto */
+.map-links-grid {
+  grid-template-columns: 1fr auto !important;
+}
+
+.map-info-item .map-links-grid > :last-child {
+  justify-self: end;
+}
+
+/* Footer centrado y sin desalineaciones */
+.footer-meta-list {
+  display: flex !important;
+  align-items: center !important;
+  justify-content: center !important;
+  width: 100% !important;
+}
+
+.footer-meta-socials {
+  display: none !important;
+}
+
+.footer-meta-info {
+  display: flex !important;
+  align-items: center !important;
+  justify-content: center !important;
+  flex: 1 1 auto !important;
+  width: 100% !important;
+  margin: 0 !important;
+  text-align: center !important;
+}
+
+.footer-meta-info > div {
+  width: 100% !important;
+  text-align: center !important;
+}
+
+/* Quita la línea horizontal del footer */
+.footer,
+.footer-meta,
+.footer-meta-list {
+  border-top: 0 !important;
+  border-bottom: 0 !important;
+  box-shadow: none !important;
+}
+
+.map-info-item.is-last .html-embed {
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+}
