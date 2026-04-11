@@ -17,7 +17,7 @@ export function AboutPage() {
             Ángel Eduardo Sandoval
           </h1>
           <div className="content-block">
-            <div>
+            <div className="about-intro-text">
               Soy especialista en Infraestructura y DevOps, enfocado en construir y mantener sistemas confiables, pero
               también en entender cómo mejorar los procesos detrás de cada solución.
               <br />

@@ -315,6 +315,11 @@ body {
   box-shadow: 0 0 0 6px rgba(127, 90, 240, 0.15);
 }
 
+.about-intro-text {
+  text-align: justify;
+  text-justify: inter-word;
+}
+
 /* Estado OpenToWork con punto verde animado */
 .availability-dot {
   width: 7px !important;

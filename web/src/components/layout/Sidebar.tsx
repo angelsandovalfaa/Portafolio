@@ -65,8 +65,6 @@ export function Sidebar() {
         </div>
         <div className="sidebar-navbar">
           <div data-w-id="8d494ae3-3d14-0190-6722-7f8a9b412173" className="navbar-list">
-            <div style={{ opacity: 0 }} className="navbar-link-hover-bg"></div>
-
             <NavLink
               to="/"
               end
