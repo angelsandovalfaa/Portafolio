@@ -247,7 +247,7 @@ export function HomePage() {
         </div>
       </div>
 
-      <div className="block-divider"></div>
+      <div className="block-divider section-separator"></div>
 
       <div className="section-block">
         <div className="content-title-wrap">
@@ -256,18 +256,20 @@ export function HomePage() {
         </div>
         <div
           id="w-node-c9c4da76-01ab-03d8-eb75-aa92a01404fc-1a4c79d3"
-          className="w-layout-hflex flex-block"
+          className="w-layout-hflex flex-block specialties-grid"
         >
-          <div className="accordion-list">
+          <div className="accordion-list specialties-column">
             <FaqAccordionItem
+              variant="specialties"
               open={openSpecialty === SPECIALTY_IDS[0]}
               onToggle={() => toggleSpecialty(SPECIALTY_IDS[0])}
               title={<strong>Linux Server Administration</strong>}
             >
-              With Webflow, I can create a visually stunning website without the need for extensive coding. This not
-              only ensures a beautiful design but also gives us the flexibility to make changes quickly and efficiently.
+              Administracion de servidores Linux para produccion: hardening inicial, gestion de usuarios/permisos,
+              monitoreo de recursos, troubleshooting y automatizacion de tareas operativas.
             </FaqAccordionItem>
             <FaqAccordionItem
+              variant="specialties"
               open={openSpecialty === SPECIALTY_IDS[1]}
               onToggle={() => toggleSpecialty(SPECIALTY_IDS[1])}
               title={<strong>Docker + Contenedores</strong>}
@@ -276,56 +278,60 @@ export function HomePage() {
               experiences.
             </FaqAccordionItem>
             <FaqAccordionItem
+              variant="specialties"
               open={openSpecialty === SPECIALTY_IDS[2]}
               onToggle={() => toggleSpecialty(SPECIALTY_IDS[2])}
               title={<strong>Kubernetes Operations</strong>}
             >
-              Is your marketing team too busy to learn Webflow? By building your website based on reusable components,
-              I can make creating and deploying new landing pages as easy as clicking a button.
+              Operacion de clusters Kubernetes: deployments, ingress, config/secrets, autoscaling, observabilidad y
+              resolucion de incidentes para mantener alta disponibilidad.
             </FaqAccordionItem>
             <FaqAccordionItem
+              variant="specialties"
               open={openSpecialty === SPECIALTY_IDS[3]}
               onToggle={() => toggleSpecialty(SPECIALTY_IDS[3])}
               title={<strong> CI/CD Pipelines</strong>}
             >
-              Webflow provides tools to optimize your website for search engines, helping to improve your online
-              visibility and reach your target audience more effectively.
+              Diseno de pipelines CI/CD con validaciones automáticas, test, build, seguridad y despliegues
+              progresivos para entregar cambios con velocidad y control.
             </FaqAccordionItem>
           </div>
-          <div className="accordion-list">
+          <div className="accordion-list specialties-column">
             <FaqAccordionItem
+              variant="specialties"
               open={openSpecialty === SPECIALTY_IDS[4]}
               onToggle={() => toggleSpecialty(SPECIALTY_IDS[4])}
               title={<strong>Observabilidad</strong>}
             >
-              No need to worry about finding a separate hosting solution. Webflow provides hosting services as part of
-              the package, ensuring your website is secure, reliable, and always up to date.
-              <strong>
-                <br />
-              </strong>
+              Implementacion de metricas, logs y alertas con Prometheus, Grafana y herramientas de tracing para
+              detectar problemas antes de que impacten al negocio.
             </FaqAccordionItem>
             <FaqAccordionItem
+              variant="specialties"
               open={openSpecialty === SPECIALTY_IDS[5]}
               onToggle={() => toggleSpecialty(SPECIALTY_IDS[5])}
               title={<strong>Seguridad y Hardening</strong>}
             >
-              If you plan to sell products online, Webflow&apos;s e-commerce capabilities are robust and user-friendly.
-              We can set up a seamless online store experience for your customers.
+              Endurecimiento de infraestructura y pipelines: gestion de secretos, politicas de acceso, escaneo de
+              vulnerabilidades y buenas practicas de seguridad desde el desarrollo.
             </FaqAccordionItem>
             <FaqAccordionItem
+              variant="specialties"
               open={openSpecialty === SPECIALTY_IDS[6]}
               onToggle={() => toggleSpecialty(SPECIALTY_IDS[6])}
               title={<strong>Automatizacion de Infraestructura</strong>}
             >
-              All my builds put extra emphasis on performance and efficiency.
+              Provisioning con IaC (Terraform/Ansible), estandarizacion de entornos y automatizacion de operaciones
+              repetitivas para reducir errores manuales.
             </FaqAccordionItem>
             <FaqAccordionItem
+              variant="specialties"
               open={openSpecialty === SPECIALTY_IDS[7]}
               onToggle={() => toggleSpecialty(SPECIALTY_IDS[7])}
               title={<strong>Soporte y Mejora Continua</strong>}
             >
-              Webflow has a vibrant community, and I&apos;ll have access to extensive documentation and tutorials. This
-              ensures that I can provide ongoing support and address any questions or concerns that may arise.
+              Acompanamiento post-lanzamiento con mantenimiento evolutivo, optimizacion de costos/rendimiento y mejora
+              continua basada en metricas e incidentes reales.
             </FaqAccordionItem>
           </div>
         </div>
@@ -339,7 +345,7 @@ export function HomePage() {
           <h2 className="content-title">Tools</h2>
         </div>
         <div className="w-layout-grid _2x-column">
-          <a href="https://www.webflow.com" target="_blank" rel="noreferrer" className="card w-inline-block">
+          <a href="" target="_blank" rel="noreferrer" className="card w-inline-block">
             <div className="shine-wrap">
               <div className="shine"></div>
             </div>
@@ -427,62 +433,6 @@ export function HomePage() {
                 </div>
               </div>
             </a>
-          </div>
-        </div>
-      </div>
-
-      <div className="block-divider"></div>
-
-      <div className="section-block">
-        <div className="content-title-wrap">
-          <div className="content-title-dot"></div>
-          <h2 className="content-title">Logros</h2>
-        </div>
-        <div className="w-layout-grid _2x-column">
-          <div className="testimonial-card">
-            <div className="testimonial-quote">
-              <div className="testimonial-quotation-mark">“</div>
-              <div>
-                Fast efficient communication with a Serhii that was willed to communicate even after our engagement.
-                THANK YOU!
-              </div>
-            </div>
-            <div className="testimonial-footer">
-              <div>Simon Bernhar, CEO</div>
-            </div>
-          </div>
-          <div className="testimonial-card">
-            <div className="testimonial-quote">
-              <div className="testimonial-quotation-mark">“</div>
-              <div>He has good taste for minimal design, he did a very good job. I would recommend him.</div>
-            </div>
-            <div className="testimonial-footer">
-              <div>Heloise I., Manager</div>
-            </div>
-          </div>
-          <div className="testimonial-card">
-            <div className="testimonial-quote">
-              <div className="testimonial-quotation-mark">“</div>
-              <div>
-                Great Freelancer. Delivered quickly and knew exactly what he had to do! Thanks!
-                <br />
-              </div>
-            </div>
-            <div className="testimonial-footer">
-              <div>Michael, Streete Foundation</div>
-            </div>
-          </div>
-          <div className="testimonial-card">
-            <div className="testimonial-quote">
-              <div className="testimonial-quotation-mark">“</div>
-              <div>
-                Great work - delivered on time and well executed. Thanks.
-                <br />
-              </div>
-            </div>
-            <div className="testimonial-footer">
-              <div>Prianka D., Founder</div>
-            </div>
           </div>
         </div>
       </div>

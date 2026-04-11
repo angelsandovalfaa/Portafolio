@@ -59,7 +59,7 @@ export const TOOLS_SECTIONS: ToolsSectionData[] = [
     subtitle: 'Seamlessly integrate my engineering workflows',
     cards: [
       {
-        href: 'https://webflow.com/',
+        href: '',
         icon: '/assets/icons/webflow.png',
         title: 'Webflow',
         desc: "Webflow is a user-friendly and intuitive website builder that makes creating pages easy even for those who don't write code. Forget about developers and let your creativity flow.",

@@ -50,9 +50,9 @@ export function ContactPage() {
         </div>
         <div className="form-block w-form">
           <form id="send-a-message" name="email-form" method="get">
-            <div className="w-layout-grid _4x-column">
+            <div className="w-layout-grid _4x-column contact-form-grid">
               <input
-                className="text-field w-input"
+                className="text-field w-input contact-input contact-input-name"
                 maxLength={256}
                 name="name"
                 placeholder="Tu nombre"
@@ -60,7 +60,7 @@ export function ContactPage() {
                 id="name"
               />
               <input
-                className="text-field w-input"
+                className="text-field w-input contact-input contact-input-email"
                 maxLength={256}
                 name="email"
                 placeholder="Tu email"
@@ -73,9 +73,14 @@ export function ContactPage() {
                 maxLength={5000}
                 id="field"
                 name="field"
-                className="text-field is-area w-input"
+                className="text-field is-area w-input contact-input contact-textarea"
               ></textarea>
-              <input type="submit" className="button w-button" value="Enviar" data-wait="Enviando..." />
+              <input
+                type="submit"
+                className="button w-button contact-submit"
+                value="Enviar"
+                data-wait="Enviando..."
+              />
             </div>
           </form>
           <div className="w-form-done">

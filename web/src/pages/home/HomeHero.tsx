@@ -78,7 +78,6 @@ export function HomeHero() {
           </div>
         </div>
       </div>
-      <div className="block-divider"></div>
     </>
   )
 }

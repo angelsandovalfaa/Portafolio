@@ -1,10 +1,10 @@
 export function ContactDirectGrid() {
   return (
-    <div className="w-layout-grid _4x-column">
+    <div className="w-layout-grid _4x-column contact-direct-grid">
       <div
         id="w-node-c98478fb-b849-c8b6-5d74-2ac4447cab12-1a4c79d9"
         data-w-id="c98478fb-b849-c8b6-5d74-2ac4447cab12"
-        className="card"
+        className="card contact-card-map no-shine"
       >
         <div className="shine-wrap">
           <div className="shine"></div>
@@ -13,7 +13,6 @@ export function ContactDirectGrid() {
           <img
             src="/assets/mapa.png"
             loading="lazy"
-            style={{ opacity: 0.5 }}
             sizes="100vw"
             alt="Mapa de San Miguel, Buenos Aires"
             srcSet="/assets/mapa.png 1590w"
@@ -68,7 +67,7 @@ export function ContactDirectGrid() {
         href="http://www.linkedin.com/in/angel-eduardo-sandoval"
         target="_blank"
         rel="noreferrer"
-        className="card w-inline-block"
+        className="card w-inline-block contact-card-linkedin"
       >
         <div className="shine-wrap">
           <div className="shine"></div>
@@ -122,7 +121,12 @@ export function ContactDirectGrid() {
           </div>
         </div>
       </a>
-      <a href="/assets/CV.DevOps-Angel-Sandoval.pdf" target="_blank" rel="noreferrer" className="card w-inline-block">
+      <a
+        href="/assets/CV.DevOps-Angel-Sandoval.pdf"
+        target="_blank"
+        rel="noreferrer"
+        className="card w-inline-block contact-card-cv"
+      >
         <div className="shine-wrap">
           <div className="shine"></div>
         </div>
@@ -185,7 +189,7 @@ export function ContactDirectGrid() {
         href="https://cdn.prod.website-files.com/66e2e525ff88cd2d1a4c79ce/66e2e525ff88cd2d1a4c7a1d_certificate%20(8)_merged_pagenumber%20(2).pdf"
         target="_blank"
         rel="noreferrer"
-        className="card w-inline-block"
+        className="card w-inline-block contact-card-cert"
       >
         <div className="shine-wrap">
           <div className="shine"></div>
