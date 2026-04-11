@@ -1,9 +1,41 @@
-import { Link, NavLink, useLocation } from 'react-router-dom'
+import { useEffect, useRef, useState } from 'react'
+import { Link, NavLink, useLocation, useNavigate } from 'react-router-dom'
 
 export function Sidebar() {
   const { pathname } = useLocation()
+  const navigate = useNavigate()
+  const [pendingPath, setPendingPath] = useState<string | null>(null)
+  const navTimerRef = useRef<number | null>(null)
   const projectsActive = pathname === '/projects' || pathname.startsWith('/project/')
   const contactHeaderCurrent = pathname === '/contact'
+
+  useEffect(() => {
+    setPendingPath(null)
+  }, [pathname])
+
+  useEffect(() => {
+    return () => {
+      if (navTimerRef.current !== null) {
+        window.clearTimeout(navTimerRef.current)
+      }
+    }
+  }, [])
+
+  const navigateWithTransition = (event: React.MouseEvent<HTMLAnchorElement>, to: string) => {
+    if (to === pathname) return
+
+    event.preventDefault()
+    setPendingPath(to)
+
+    if (navTimerRef.current !== null) {
+      window.clearTimeout(navTimerRef.current)
+    }
+
+    navTimerRef.current = window.setTimeout(() => {
+      navigate(to)
+    }, 180)
+  }
+
   return (
     <div className="sidebar">
       <div className="sidebar-content">
@@ -38,11 +70,12 @@ export function Sidebar() {
             <NavLink
               to="/"
               end
+              onClick={(event) => navigateWithTransition(event, '/')}
               className={({ isActive }) => `navbar-link w-inline-block${isActive ? ' w--current' : ''}`}
             >
               {({ isActive }) => (
                 <>
-                  {isActive && (
+                  {(isActive || pendingPath === '/') && (
                     <div style={{ opacity: 1 }} className="navbar-link-active-bg"></div>
                   )}
                   <div className="w-layout-grid navbar-link-content">
@@ -81,9 +114,12 @@ export function Sidebar() {
 
             <Link
               to="/projects"
+              onClick={(event) => navigateWithTransition(event, '/projects')}
               className={`navbar-link w-inline-block${projectsActive ? ' w--current' : ''}`}
             >
-              {projectsActive && <div style={{ opacity: 1 }} className="navbar-link-active-bg"></div>}
+              {(projectsActive || pendingPath === '/projects') && (
+                <div style={{ opacity: 1 }} className="navbar-link-active-bg"></div>
+              )}
               <div className="w-layout-grid navbar-link-content">
                 <div className="navbar-icon-wrap">
                   <div className="navbar-active-icon w-embed">
@@ -114,11 +150,12 @@ export function Sidebar() {
 
             <NavLink
               to="/tools"
+              onClick={(event) => navigateWithTransition(event, '/tools')}
               className={({ isActive }) => `navbar-link w-inline-block${isActive ? ' w--current' : ''}`}
             >
               {({ isActive }) => (
                 <>
-                  {isActive && (
+                  {(isActive || pendingPath === '/tools') && (
                     <div style={{ opacity: 1 }} className="navbar-link-active-bg"></div>
                   )}
                   <div className="w-layout-grid navbar-link-content">
@@ -155,11 +192,12 @@ export function Sidebar() {
 
             <NavLink
               to="/about"
+              onClick={(event) => navigateWithTransition(event, '/about')}
               className={({ isActive }) => `navbar-link w-inline-block${isActive ? ' w--current' : ''}`}
             >
               {({ isActive }) => (
                 <>
-                  {isActive && (
+                  {(isActive || pendingPath === '/about') && (
                     <div style={{ opacity: 1 }} className="navbar-link-active-bg"></div>
                   )}
                   <div className="w-layout-grid navbar-link-content">
@@ -198,11 +236,12 @@ export function Sidebar() {
 
             <NavLink
               to="/contact"
+              onClick={(event) => navigateWithTransition(event, '/contact')}
               className={({ isActive }) => `navbar-link w-inline-block${isActive ? ' w--current' : ''}`}
             >
               {({ isActive }) => (
                 <>
-                  {isActive && (
+                  {(isActive || pendingPath === '/contact') && (
                     <div style={{ opacity: 1 }} className="navbar-link-active-bg"></div>
                   )}
                   <div className="w-layout-grid navbar-link-content">

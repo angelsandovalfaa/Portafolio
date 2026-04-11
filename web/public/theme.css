@@ -272,6 +272,43 @@ body {
   display: none !important;
 }
 
+/* Nav sidebar: hover/click transition estilo original */
+.navbar-link {
+  position: relative;
+  overflow: hidden;
+}
+
+.navbar-link::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  border-radius: inherit;
+  border: 1px solid rgba(148, 118, 246, 0.45);
+  background: linear-gradient(180deg, rgba(120, 84, 232, 0.24), rgba(64, 43, 121, 0.28));
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity 180ms ease;
+  z-index: 1;
+}
+
+.navbar-link:hover::after {
+  opacity: 1;
+}
+
+.navbar-link.w--current::after {
+  opacity: 0;
+}
+
+.navbar-link-active-bg {
+  transition: opacity 180ms ease !important;
+  z-index: 2;
+}
+
+.navbar-link-content {
+  position: relative;
+  z-index: 3;
+}
+
 /* Punto de títulos de sección */
 .content-title-dot {
   background: var(--accent) !important;
