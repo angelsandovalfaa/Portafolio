@@ -272,10 +272,10 @@ export function HomePage() {
               variant="specialties"
               open={openSpecialty === SPECIALTY_IDS[1]}
               onToggle={() => toggleSpecialty(SPECIALTY_IDS[1])}
-              title={<strong>Docker + Contenedores</strong>}
+              title={<strong>Docker y Contenerizacion</strong>}
             >
-              From subtle micro-interactions to complex &quot;WOW&quot; animations. I transform ideas into delightful
-              experiences.
+              Creo plataformas containerizadas que estandarizan entornos, aceleran entregas y mejoran la confiabilidad
+              operativa en cada despliegue.
             </FaqAccordionItem>
             <FaqAccordionItem
               variant="specialties"
@@ -339,21 +339,25 @@ export function HomePage() {
 
       <div className="block-divider"></div>
 
-      <div className="section-block">
+      <div className="section-block tools-section">
         <div className="content-title-wrap">
           <div className="content-title-dot"></div>
           <h2 className="content-title">Tools</h2>
         </div>
         <div className="w-layout-grid _2x-column">
-          <a href="" target="_blank" rel="noreferrer" className="card w-inline-block">
+          <a href="https://git-scm.com/" target="_blank" rel="noreferrer" className="card w-inline-block">
             <div className="shine-wrap">
               <div className="shine"></div>
             </div>
             <div className="card-content-vertical">
               <div className="tools-head-long">
                 <div className="app-wrap">
-                  <img src="/assets/icons/webflow.png" loading="lazy" alt="" className="sidebar-header-avatar" />
-                  <div className="app-outline"></div>
+                  <img
+                    src="/assets/icons/github-white.svg"
+                    loading="lazy"
+                    alt="GitHub"
+                    className="sidebar-header-avatar"
+                  />
                 </div>
                 <div className="card-cta-wrap">
                   <div className="card-badge is-orange">Favorite</div>
@@ -363,13 +367,13 @@ export function HomePage() {
                 </div>
               </div>
               <div>
-                <h2 className="card-heading">Webflow</h2>
-                <div>A user-friendly and intuitive website builder that makes creating pages easy even for...</div>
+                <h2 className="card-heading">Git</h2>
+                <div>Gestiono versionado y flujo de ramas para colaborar con seguridad en cada entrega.</div>
               </div>
             </div>
           </a>
           <div className="_1x-column">
-            <a href="https://www.relume.io/" target="_blank" rel="noreferrer" className="card w-inline-block">
+            <a href="https://www.terraform.io/" target="_blank" rel="noreferrer" className="card w-inline-block">
               <div className="shine-wrap">
                 <div className="shine"></div>
               </div>
@@ -377,23 +381,21 @@ export function HomePage() {
                 <div className="tools">
                   <div className="tools-head">
                     <div className="tools-icon">
-                      <img src="/assets/icons/relume.png" loading="lazy" alt="" className="image-background" />
-                      <div className="app-outline"></div>
+                      <img src="/assets/icons/terraform.svg" loading="lazy" alt="Terraform" className="image-background" />
                     </div>
                     <div>
-                      <h2 className="card-heading">Relume</h2>
+                      <h2 className="card-heading">Terraform</h2>
                     </div>
                   </div>
                   <div className="card-text-2-lines">
-                    Site Builder utilizes a built-in design system and component library of 1000+ components made for
-                    Figma &amp; Webflow.
+                    Defino infraestructura como codigo para estandarizar entornos y escalar cambios con control.
                   </div>
                 </div>
                 <div className="card-meta">
                   <div className="card-info">
-                    <div className="card-tag">Design</div>
-                    <div className="card-tag">Prototype</div>
-                    <div className="card-tag">Feedback</div>
+                    <div className="card-tag">IaC</div>
+                    <div className="card-tag">Automatizacion</div>
+                    <div className="card-tag">Cloud</div>
                   </div>
                   <div className="card-cta">
                     <CardCtaArrow />
@@ -401,7 +403,7 @@ export function HomePage() {
                 </div>
               </div>
             </a>
-            <a href="https://finsweet.com/client-first" target="_blank" rel="noreferrer" className="card w-inline-block">
+            <a href="https://kubernetes.io/" target="_blank" rel="noreferrer" className="card w-inline-block">
               <div className="shine-wrap">
                 <div className="shine"></div>
               </div>
@@ -409,23 +411,26 @@ export function HomePage() {
                 <div className="tools">
                   <div className="tools-head">
                     <div className="tools-icon">
-                      <img src="/assets/icons/client-first.jpg" loading="lazy" alt="" className="image-background" />
-                      <div className="app-outline"></div>
+                      <img
+                        src="/assets/icons/kubernetes.svg"
+                        loading="lazy"
+                        alt="Kubernetes"
+                        className="image-background"
+                      />
                     </div>
                     <div>
-                      <h2 className="card-heading">Client-First </h2>
+                      <h2 className="card-heading">Kubernetes</h2>
                     </div>
                   </div>
                   <div className="card-text-2-lines">
-                    Client-First is a set of guidelines and strategies to help us build Webflow websites. Built and
-                    managed by Finsweet.
+                    Orquesto workloads con escalado, alta disponibilidad y control operativo en produccion.
                   </div>
                 </div>
                 <div className="card-meta">
                   <div className="card-info">
-                    <div className="card-tag">No Code</div>
-                    <div className="card-tag">Collaboration</div>
-                    <div className="card-tag">Feedback</div>
+                    <div className="card-tag">Orquestacion</div>
+                    <div className="card-tag">Escalado</div>
+                    <div className="card-tag">SRE</div>
                   </div>
                   <div className="card-cta">
                     <CardCtaArrow />

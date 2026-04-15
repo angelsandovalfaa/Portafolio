@@ -195,6 +195,19 @@ html {
   }
 }
 
+/* Home > Tools: iconos sin recuadro */
+.tools-section .app-wrap,
+.tools-section .tools-icon {
+  background: transparent !important;
+  border: 0 !important;
+  box-shadow: none !important;
+}
+
+.tools-section .app-outline,
+.tools-section .tools-icon .app-outline {
+  display: none !important;
+}
+
 /* Home/Contact > Contacto directo exact layout */
 .contact-direct-grid {
   display: grid !important;
