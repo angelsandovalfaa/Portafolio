@@ -3,7 +3,7 @@ import { TOOLS_SECTIONS } from '../data/toolsStatic'
 
 export function ToolsPage() {
   return (
-    <>
+    <div className="stack-page">
       <div className="hero-block">
         <div className="hero-heading-wrap">
           <h1 data-animate="font-weight" className="hero-heading">
@@ -46,7 +46,6 @@ export function ToolsPage() {
                             sizes={t.sizes}
                             srcSet={t.srcSet}
                           />
-                          <div className="app-outline"></div>
                         </div>
                         <div>
                           <h2 className="card-heading">{t.title}</h2>
@@ -73,6 +72,6 @@ export function ToolsPage() {
           </div>
         </div>
       ))}
-    </>
+    </div>
   )
 }

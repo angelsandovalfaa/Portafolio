@@ -263,10 +263,10 @@ export function HomePage() {
               variant="specialties"
               open={openSpecialty === SPECIALTY_IDS[0]}
               onToggle={() => toggleSpecialty(SPECIALTY_IDS[0])}
-              title={<strong>Linux Server Administration</strong>}
+              title={<strong>Administracion de Linux Server</strong>}
             >
-              Administracion de servidores Linux para produccion: hardening inicial, gestion de usuarios/permisos,
-              monitoreo de recursos, troubleshooting y automatizacion de tareas operativas.
+              Administracion de servidores Linux en produccion: hardening, gestion de usuarios y permisos, operacion
+              segura, diagnostico de fallas y automatizacion de tareas para mejorar estabilidad y rendimiento.
             </FaqAccordionItem>
             <FaqAccordionItem
               variant="specialties"
@@ -274,26 +274,26 @@ export function HomePage() {
               onToggle={() => toggleSpecialty(SPECIALTY_IDS[1])}
               title={<strong>Docker y Contenerizacion</strong>}
             >
-              Creo plataformas containerizadas que estandarizan entornos, aceleran entregas y mejoran la confiabilidad
-              operativa en cada despliegue.
+              Diseno y opero entornos containerizados con Docker para estandarizar desarrollo y produccion, reducir
+              errores por diferencias de entorno y acelerar despliegues.
             </FaqAccordionItem>
             <FaqAccordionItem
               variant="specialties"
               open={openSpecialty === SPECIALTY_IDS[2]}
               onToggle={() => toggleSpecialty(SPECIALTY_IDS[2])}
-              title={<strong>Kubernetes Operations</strong>}
+              title={<strong>Operaciones con Kubernetes</strong>}
             >
-              Operacion de clusters Kubernetes: deployments, ingress, config/secrets, autoscaling, observabilidad y
-              resolucion de incidentes para mantener alta disponibilidad.
+              Gestion de clusters Kubernetes: deployments, ingress, config/secrets, autoscaling y resolucion de
+              incidentes para sostener disponibilidad, escalabilidad y confiabilidad operativa.
             </FaqAccordionItem>
             <FaqAccordionItem
               variant="specialties"
               open={openSpecialty === SPECIALTY_IDS[3]}
               onToggle={() => toggleSpecialty(SPECIALTY_IDS[3])}
-              title={<strong> CI/CD Pipelines</strong>}
+              title={<strong>CI/CD Pipelines</strong>}
             >
-              Diseno de pipelines CI/CD con validaciones automáticas, test, build, seguridad y despliegues
-              progresivos para entregar cambios con velocidad y control.
+              Implementacion de pipelines CI/CD con validaciones, testing, build, controles de calidad y despliegues
+              automatizados para entregar cambios con mayor velocidad y trazabilidad.
             </FaqAccordionItem>
           </div>
           <div className="accordion-list specialties-column">
@@ -303,8 +303,8 @@ export function HomePage() {
               onToggle={() => toggleSpecialty(SPECIALTY_IDS[4])}
               title={<strong>Observabilidad</strong>}
             >
-              Implementacion de metricas, logs y alertas con Prometheus, Grafana y herramientas de tracing para
-              detectar problemas antes de que impacten al negocio.
+              Implementacion de metricas, logs y alertas con Prometheus y Grafana para detectar desviaciones temprano,
+              acortar tiempos de respuesta y mejorar la salud de los servicios.
             </FaqAccordionItem>
             <FaqAccordionItem
               variant="specialties"
@@ -312,8 +312,8 @@ export function HomePage() {
               onToggle={() => toggleSpecialty(SPECIALTY_IDS[5])}
               title={<strong>Seguridad y Hardening</strong>}
             >
-              Endurecimiento de infraestructura y pipelines: gestion de secretos, politicas de acceso, escaneo de
-              vulnerabilidades y buenas practicas de seguridad desde el desarrollo.
+              Endurecimiento de infraestructura y pipelines mediante gestion de secretos, control de accesos,
+              cumplimiento de procedimientos y buenas practicas de seguridad en todo el ciclo de entrega.
             </FaqAccordionItem>
             <FaqAccordionItem
               variant="specialties"
@@ -321,8 +321,8 @@ export function HomePage() {
               onToggle={() => toggleSpecialty(SPECIALTY_IDS[6])}
               title={<strong>Automatizacion de Infraestructura</strong>}
             >
-              Provisioning con IaC (Terraform/Ansible), estandarizacion de entornos y automatizacion de operaciones
-              repetitivas para reducir errores manuales.
+              Provisioning con IaC (Terraform), estandarizacion de entornos y automatizacion de tareas repetitivas para
+              reducir errores manuales, mejorar consistencia y facilitar escalado.
             </FaqAccordionItem>
             <FaqAccordionItem
               variant="specialties"
@@ -330,8 +330,8 @@ export function HomePage() {
               onToggle={() => toggleSpecialty(SPECIALTY_IDS[7])}
               title={<strong>Soporte y Mejora Continua</strong>}
             >
-              Acompanamiento post-lanzamiento con mantenimiento evolutivo, optimizacion de costos/rendimiento y mejora
-              continua basada en metricas e incidentes reales.
+              Soporte post-lanzamiento con enfoque en confiabilidad operativa: analisis de incidentes, optimizacion de
+              rendimiento y mejora continua basada en datos reales.
             </FaqAccordionItem>
           </div>
         </div>
@@ -353,9 +353,9 @@ export function HomePage() {
               <div className="tools-head-long">
                 <div className="app-wrap">
                   <img
-                    src="/assets/icons/github-white.svg"
+                    src="/assets/icons/git.svg"
                     loading="lazy"
-                    alt="GitHub"
+                    alt="Git"
                     className="sidebar-header-avatar"
                   />
                 </div>

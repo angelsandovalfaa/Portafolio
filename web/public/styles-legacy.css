@@ -208,6 +208,19 @@ html {
   display: none !important;
 }
 
+/* Stack page: iconos sin recuadro */
+.stack-page .tools-icon,
+.stack-page .app-wrap {
+  background: transparent !important;
+  border: 0 !important;
+  box-shadow: none !important;
+}
+
+.stack-page .tools-icon .app-outline,
+.stack-page .app-wrap .app-outline {
+  display: none !important;
+}
+
 /* Home/Contact > Contacto directo exact layout */
 .contact-direct-grid {
   display: grid !important;
