@@ -50,11 +50,11 @@ export function Sidebar() {
                 loading="eager"
                 fetchPriority="high"
                 decoding="async"
+                width={56}
+                height={56}
                 alt=""
                 className="sidebar-header-avatar"
                 style={{
-                  width: '100%',
-                  height: '100%',
                   display: 'block',
                   borderRadius: '9999px',
                   objectFit: 'cover',
@@ -304,11 +304,11 @@ export function Sidebar() {
               src="/assets/2026-04-06_21-41.avif"
               loading="lazy"
               decoding="async"
+              width={56}
+              height={56}
               alt=""
               className="sidebar-header-avatar"
               style={{
-                width: '100%',
-                height: '100%',
                 display: 'block',
                 borderRadius: '9999px',
                 objectFit: 'cover',
