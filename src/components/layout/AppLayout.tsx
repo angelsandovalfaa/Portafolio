@@ -10,7 +10,9 @@ import { Footer } from './Footer'
 export function AppLayout() {
   const { pathname } = useLocation()
   const [readyPathname, setReadyPathname] = useState<string | null>(null)
+  const [fontsReady, setFontsReady] = useState(false)
   const isPageStyleReady = readyPathname === pathname
+  const isShellReady = isPageStyleReady && fontsReady
 
   useLayoutEffect(() => {
     setReadyPathname(null)
@@ -40,6 +42,22 @@ export function AppLayout() {
   }, [pathname])
 
   useEffect(() => {
+    if (!('fonts' in document)) {
+      setFontsReady(true)
+      return
+    }
+
+    let cancelled = false
+    void document.fonts.ready.then(() => {
+      if (!cancelled) setFontsReady(true)
+    })
+
+    return () => {
+      cancelled = true
+    }
+  }, [])
+
+  useEffect(() => {
     const fallbackTimer = window.setTimeout(() => {
       const stillLoading = document.documentElement.classList.contains('wf-style-loading')
       if (stillLoading) {
@@ -66,6 +84,8 @@ export function AppLayout() {
   return (
     <>
       <WebflowPageStyles />
+      <div className={`app-shell${isShellReady ? ' is-ready' : ''}`} aria-busy={!isShellReady}>
+        {!isShellReady && <div className="app-ready-overlay" aria-hidden="true" />}
       <div className="layout min-h-0">
         <Sidebar />
         <div className="main">
@@ -85,6 +105,7 @@ export function AppLayout() {
             </div>
           </div>
         </div>
+      </div>
       </div>
       <main className="main-content" role="main">
         <NoiseCanvas />
