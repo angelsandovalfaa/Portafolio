@@ -1,24 +1,5 @@
 @tailwind utilities;
 
-.app-shell {
-  opacity: 0;
-  visibility: hidden;
-}
-
-.app-shell.is-ready {
-  opacity: 1;
-  visibility: visible;
-  transition: opacity 120ms ease;
-}
-
-.app-ready-overlay {
-  position: fixed;
-  inset: 0;
-  background: #060608;
-  pointer-events: none;
-  z-index: 2147483647;
-}
-
 .route-content-transition {
   opacity: 0;
   transform: translateY(10px);
