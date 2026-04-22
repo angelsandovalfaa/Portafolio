@@ -1,5 +1,38 @@
-import { useEffect, useRef, useState } from 'react'
+import { memo, useEffect, useRef, useState } from 'react'
 import { Link, NavLink, useLocation, useNavigate } from 'react-router-dom'
+
+const SidebarProfile = memo(function SidebarProfile() {
+  return (
+    <div className="sidebar-header">
+      <Link to="/contact" className="sidebar-header-wrap w-inline-block">
+        <div className="sidebar-header-avatar-wrap">
+          <img
+            src="/assets/2026-04-06_21-41.avif"
+            loading="eager"
+            fetchPriority="high"
+            decoding="async"
+            width={56}
+            height={56}
+            alt=""
+            className="sidebar-header-avatar"
+            style={{
+              display: 'block',
+              borderRadius: '9999px',
+              objectFit: 'cover',
+            }}
+          />
+          <div className="sidebar-header-avatar-outline"></div>
+        </div>
+        <div className="sidebar-header-info">
+          <div className="sidebar-header-name">Ángel Eduardo Sandoval</div>
+          <div className="sidebar-header-title">
+            <div>DevOps Engineer</div>
+          </div>
+        </div>
+      </Link>
+    </div>
+  )
+})
 
 export function Sidebar() {
   const { pathname } = useLocation()
@@ -7,7 +40,6 @@ export function Sidebar() {
   const [pendingPath, setPendingPath] = useState<string | null>(null)
   const navTimerRef = useRef<number | null>(null)
   const projectsActive = pathname === '/projects' || pathname.startsWith('/project/')
-  const contactHeaderCurrent = pathname === '/contact'
 
   useEffect(() => {
     setPendingPath(null)
@@ -39,37 +71,7 @@ export function Sidebar() {
   return (
     <div className="sidebar">
       <div className="sidebar-content">
-        <div className="sidebar-header">
-          <Link
-            to="/contact"
-            className={`sidebar-header-wrap w-inline-block${contactHeaderCurrent ? ' w--current' : ''}`}
-          >
-            <div className="sidebar-header-avatar-wrap">
-              <img
-                src="/assets/2026-04-06_21-41.avif"
-                loading="eager"
-                fetchPriority="high"
-                decoding="async"
-                width={56}
-                height={56}
-                alt=""
-                className="sidebar-header-avatar"
-                style={{
-                  display: 'block',
-                  borderRadius: '9999px',
-                  objectFit: 'cover',
-                }}
-              />
-              <div className="sidebar-header-avatar-outline"></div>
-            </div>
-            <div className="sidebar-header-info">
-              <div className="sidebar-header-name">Ángel Eduardo Sandoval</div>
-              <div className="sidebar-header-title">
-                <div>DevOps Engineer</div>
-              </div>
-            </div>
-          </Link>
-        </div>
+        <SidebarProfile />
         <div className="sidebar-navbar">
           <div data-w-id="8d494ae3-3d14-0190-6722-7f8a9b412173" className="navbar-list">
             <NavLink
