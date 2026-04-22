@@ -6,6 +6,14 @@ const CALENDLY_JS_ID = 'calendly-widget-js'
 
 export function ContactPage() {
   useEffect(() => {
+    if (!import.meta.env.DEV) return
+    console.log('[page-debug]', Math.round(performance.now()), 'ContactPage mount')
+    return () => {
+      console.log('[page-debug]', Math.round(performance.now()), 'ContactPage unmount')
+    }
+  }, [])
+
+  useEffect(() => {
     if (document.getElementById(CALENDLY_CSS_ID)) return
     const css = document.createElement('link')
     css.id = CALENDLY_CSS_ID

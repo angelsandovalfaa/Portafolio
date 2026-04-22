@@ -1,4 +1,14 @@
+import { useEffect } from 'react'
+
 export function HomeHero() {
+  useEffect(() => {
+    if (!import.meta.env.DEV) return
+    console.log('[page-debug]', Math.round(performance.now()), 'HomeHero mount')
+    return () => {
+      console.log('[page-debug]', Math.round(performance.now()), 'HomeHero unmount')
+    }
+  }, [])
+
   return (
     <>
       <div className="container-small align-left hero kapstan-hero-wrap">
