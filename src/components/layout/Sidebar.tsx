@@ -5,7 +5,7 @@ const SidebarProfile = memo(function SidebarProfile() {
   return (
     <div className="sidebar-header">
       <Link to="/contact" className="sidebar-header-wrap w-inline-block">
-        <div className="sidebar-profile-avatar-wrap">
+        <div className="sidebar-header-avatar-wrap">
           <img
             src="/assets/2026-04-06_21-41.avif"
             loading="eager"
@@ -14,7 +14,12 @@ const SidebarProfile = memo(function SidebarProfile() {
             width={56}
             height={56}
             alt=""
-            className="sidebar-profile-avatar"
+            className="sidebar-header-avatar"
+            style={{
+              display: 'block',
+              borderRadius: '9999px',
+              objectFit: 'cover',
+            }}
           />
           <div className="sidebar-header-avatar-outline"></div>
         </div>
@@ -296,7 +301,7 @@ export function Sidebar() {
           end
           className={({ isActive }) => `sidebar-tablet-brand w-inline-block${isActive ? ' w--current' : ''}`}
         >
-          <div className="sidebar-profile-avatar-wrap sidebar-tablet-avatar-wrap">
+          <div className="sidebar-tablet-avatar-wrap">
             <img
               src="/assets/2026-04-06_21-41.avif"
               loading="lazy"
@@ -304,7 +309,12 @@ export function Sidebar() {
               width={56}
               height={56}
               alt=""
-              className="sidebar-profile-avatar"
+              className="sidebar-header-avatar"
+              style={{
+                display: 'block',
+                borderRadius: '9999px',
+                objectFit: 'cover',
+              }}
             />
             <div className="sidebar-header-avatar-outline"></div>
           </div>
