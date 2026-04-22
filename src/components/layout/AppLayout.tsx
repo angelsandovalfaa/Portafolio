@@ -10,27 +10,18 @@ import { Footer } from './Footer'
 export function AppLayout() {
   const { pathname } = useLocation()
   const [readyPathname, setReadyPathname] = useState<string | null>(null)
-  const isDev = import.meta.env.DEV
-  const debugLog = (...args: unknown[]) => {
-    if (!isDev) return
-    // Debug de transiciones de ruta/CSS para cazar flickers intermitentes.
-    console.log('[route-debug]', Math.round(performance.now()), ...args)
-  }
   const isPageStyleReady = readyPathname === pathname
 
   useLayoutEffect(() => {
-    debugLog('pathname-change -> block route render until css-ready', { pathname })
     setReadyPathname(null)
   }, [pathname])
 
   useEffect(() => {
     const onStyleLoading = () => {
-      debugLog('event:wf-page-style-loading')
       setReadyPathname(null)
     }
     const onStyleReady = (event: Event) => {
       const readyPath = (event as CustomEvent<{ pathname?: string }>).detail?.pathname
-      debugLog('event:wf-page-style-ready', { readyPath })
       if (!readyPath) return
       setReadyPathname(readyPath)
     }
@@ -39,7 +30,6 @@ export function AppLayout() {
     window.addEventListener('wf-page-style-ready', onStyleReady as EventListener)
 
     if (!document.documentElement.classList.contains('wf-style-loading')) {
-      debugLog('boot-ready -> no loading class found')
       setReadyPathname(pathname)
     }
 
@@ -53,11 +43,9 @@ export function AppLayout() {
     const fallbackTimer = window.setTimeout(() => {
       const stillLoading = document.documentElement.classList.contains('wf-style-loading')
       if (stillLoading) {
-        debugLog('fallback-timeout -> style still loading, keep hidden', { pathname })
         return
       }
       if (readyPathname === pathname) return
-      debugLog('fallback-timeout -> force ready for current pathname', { pathname })
       setReadyPathname((current) => (current === pathname ? current : pathname))
     }, 1500)
 
