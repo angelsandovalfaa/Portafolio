@@ -46,10 +46,12 @@ export function Sidebar() {
           >
             <div className="sidebar-header-avatar-wrap">
               <img
-                src="/assets/2026-04-06_21-41.png"
-                loading="lazy"
-                sizes="(max-width: 1129px) 100vw, 1129px"
-                srcSet="/assets/2026-04-06_21-41.png 1129w"
+                src="/assets/2026-04-06_21-41.avif"
+                loading="eager"
+                fetchPriority="high"
+                decoding="async"
+                width={512}
+                height={510}
                 alt=""
                 className="sidebar-header-avatar"
               />
@@ -294,10 +296,11 @@ export function Sidebar() {
         >
           <div className="sidebar-tablet-avatar-wrap">
             <img
-              src="/assets/2026-04-06_21-41.png"
+              src="/assets/2026-04-06_21-41.avif"
               loading="lazy"
-              sizes="(max-width: 1129px) 100vw, 1129px"
-              srcSet="/assets/2026-04-06_21-41.png 1129w"
+              decoding="async"
+              width={512}
+              height={510}
               alt=""
               className="sidebar-header-avatar"
             />
