@@ -1,4 +1,4 @@
-import { useEffect, useLayoutEffect, useRef } from 'react'
+import { useLayoutEffect, useRef } from 'react'
 import { useLocation } from 'react-router-dom'
 import { getWebflowPageCss } from '../config/webflowCss'
 import { WF_DOMAIN, WF_SITE_ID, getWfPageId } from '../config/webflowPageMeta'
@@ -16,8 +16,14 @@ export function WebflowPageStyles() {
   }
 
   useLayoutEffect(() => {
-    const href = getWebflowPageCss(pathname)
     const html = document.documentElement
+    html.setAttribute('data-route-path', pathname)
+    html.setAttribute('data-wf-domain', WF_DOMAIN)
+    html.setAttribute('data-wf-site', WF_SITE_ID)
+    html.setAttribute('data-wf-status', '1')
+    html.setAttribute('data-wf-page', getWfPageId(pathname))
+
+    const href = getWebflowPageCss(pathname)
     debugLog('start-load', { pathname, href })
     requestedHrefRef.current = href
     html.classList.add(LOADING_CLASS)
@@ -64,14 +70,6 @@ export function WebflowPageStyles() {
 
     debugLog('set-link-href', { href })
     link.href = href
-  }, [pathname])
-
-  useEffect(() => {
-    const html = document.documentElement
-    html.setAttribute('data-wf-domain', WF_DOMAIN)
-    html.setAttribute('data-wf-site', WF_SITE_ID)
-    html.setAttribute('data-wf-status', '1')
-    html.setAttribute('data-wf-page', getWfPageId(pathname))
   }, [pathname])
 
   return null

@@ -15,6 +15,10 @@
   min-height: 28vh;
 }
 
+html[data-route-path]:not([data-route-path='/']) .kapstan-hero-wrap {
+  display: none !important;
+}
+
 html.wf-style-loading .route-content-transition {
   opacity: 0 !important;
   animation: none !important;

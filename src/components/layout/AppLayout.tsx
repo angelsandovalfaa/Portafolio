@@ -72,8 +72,8 @@ export function AppLayout() {
     pathname === '/about' ||
     pathname === '/contact' ||
     pathname === '/tools'
-  useFontWeightHover(fontWeightRoutes)
-  useKapstanMarquee(pathname === '/')
+  useFontWeightHover(fontWeightRoutes && isPageStyleReady)
+  useKapstanMarquee(pathname === '/' && isPageStyleReady)
 
   return (
     <>
