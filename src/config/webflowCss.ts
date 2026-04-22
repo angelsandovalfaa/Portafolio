@@ -11,6 +11,8 @@ const PAGE_CSS: Record<string, string> = {
 
 const PROJECT_CASE_CSS = `${WF_BASE}.66e2e525ff88cd2d1a4c79dc-0b5685c9e.min.css`
 
+export const WEBFLOW_PAGE_CSS_HREFS = [...Object.values(PAGE_CSS), PROJECT_CASE_CSS]
+
 export function getWebflowPageCss(pathname: string): string {
   if (pathname.startsWith('/project/')) {
     return PROJECT_CASE_CSS
