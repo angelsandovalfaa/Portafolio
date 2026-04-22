@@ -1,5 +1,29 @@
 @tailwind utilities;
 
+.sidebar-profile-avatar-wrap {
+  width: 56px !important;
+  height: 56px !important;
+  min-width: 56px !important;
+  min-height: 56px !important;
+  max-width: 56px !important;
+  max-height: 56px !important;
+  border-radius: 9999px !important;
+  overflow: hidden !important;
+  flex: 0 0 56px !important;
+}
+
+.sidebar-profile-avatar {
+  width: 56px !important;
+  height: 56px !important;
+  min-width: 56px !important;
+  min-height: 56px !important;
+  max-width: 56px !important;
+  max-height: 56px !important;
+  display: block !important;
+  border-radius: 9999px !important;
+  object-fit: cover !important;
+}
+
 .route-content-transition {
   opacity: 0;
   transform: translateY(10px);
