@@ -10,7 +10,6 @@ import { Footer } from './Footer'
 export function AppLayout() {
   const { pathname } = useLocation()
   const [isPageStyleReady, setIsPageStyleReady] = useState(false)
-  const [isRouteContentVisible, setIsRouteContentVisible] = useState(false)
 
   useEffect(() => {
     const onStyleLoading = () => setIsPageStyleReady(false)
@@ -39,22 +38,6 @@ export function AppLayout() {
     }
   }, [pathname])
 
-  useEffect(() => {
-    setIsRouteContentVisible(false)
-  }, [pathname])
-
-  useEffect(() => {
-    if (!isPageStyleReady) return
-
-    const enterTimer = window.setTimeout(() => {
-      setIsRouteContentVisible(true)
-    }, 40)
-
-    return () => {
-      window.clearTimeout(enterTimer)
-    }
-  }, [pathname, isPageStyleReady])
-
   const fontWeightRoutes =
     pathname === '/' ||
     pathname === '/projects' ||
@@ -72,9 +55,8 @@ export function AppLayout() {
         <div className="main">
           <div className="container">
             <div
-              className={`route-content-transition${
-                isPageStyleReady && isRouteContentVisible ? ' is-visible' : ''
-              }`}
+              key={pathname}
+              className={`route-content-transition${isPageStyleReady ? ' is-visible' : ''}`}
             >
               <Outlet />
               <Footer />
