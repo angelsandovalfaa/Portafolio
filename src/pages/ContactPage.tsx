@@ -99,8 +99,9 @@ export function ContactPage() {
         to_name: 'Ángel Sandoval',
         to_email: OWNER_EMAIL,
         recipient_email: OWNER_EMAIL,
-        email,
-        user_email: email,
+        email: OWNER_EMAIL,
+        user_email: OWNER_EMAIL,
+        visitor_email: email,
       }
 
       await emailjs.send(
