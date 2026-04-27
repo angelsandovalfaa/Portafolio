@@ -33,11 +33,11 @@ export function OpenToWorkCard() {
           </div>
 
           <h2 id="open-to-work-title" className="font-title text-3xl text-white md:text-4xl">
-            Disponible para oportunidades en DevOps e infraestructura
+            Abierto a nuevos desafíos en DevOps
           </h2>
 
           <p className="text-sm leading-relaxed text-slate-200 md:text-base">
-            Modalidad remota, híbrida o presencial. Base en Buenos Aires, Argentina.
+            Trabajo remoto, híbrido o presencial. Base en Buenos Aires, Argentina.
           </p>
         </div>
 

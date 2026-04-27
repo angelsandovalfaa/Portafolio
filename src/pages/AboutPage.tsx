@@ -140,7 +140,7 @@ export function AboutPage() {
           <div className="mt-6 rounded-2xl border border-emerald-300/20 bg-emerald-300/8 p-4">
             <p className="text-xs uppercase tracking-[0.14em] text-emerald-200">Objetivo actual</p>
             <p className="mt-2 text-sm leading-relaxed text-slate-200">
-              Seguir creciendo en DevOps y colaborar con equipos que valoren trabajo prolijo y mejora continua.
+              Seguir aprendiendo en DevOps y aportar en equipos con buenas prácticas y mejora continua.
             </p>
             <Link to="/contact" className="btn-secondary mt-4" aria-label="Ir a contacto">
               Contacto
