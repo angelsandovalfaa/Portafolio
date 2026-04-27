@@ -125,6 +125,13 @@ export const TOOLS_SECTIONS: ToolsSectionData[] = [
         desc: 'Repositorio y flujo de colaboracion DevOps con soporte para pipelines y revision.',
         tags: ['Repo', 'CI/CD', 'Colaboracion'],
       },
+      {
+        href: 'https://vercel.com/',
+        icon: '/assets/icons/vercel.svg',
+        title: 'Vercel',
+        desc: 'Plataforma de despliegue para proyectos web con integracion continua y entregas rapidas.',
+        tags: ['Deploy', 'CI/CD', 'Frontend'],
+      },
     ],
   },
   {

@@ -1,456 +1,220 @@
-import { useState } from 'react'
 import { Link } from 'react-router-dom'
-import { HomeHero } from './home/HomeHero'
-import { FaqAccordionItem } from '../components/ui/FaqAccordionItem'
-import { CardCtaArrow } from '../components/ui/CardCtaArrow'
-import { ContactDirectGrid } from '../components/layout/ContactDirectGrid'
+import { motion, useReducedMotion } from 'framer-motion'
+import { StackCarousel } from '../components/home/StackCarousel'
+import { OpenToWorkCard } from '../components/ui/OpenToWorkCard'
+import { PROJECTS_GRID } from '../data/projects'
+import { TOOLS_SECTIONS } from '../data/toolsStatic'
 
-const SPECIALTY_IDS = [
-  'linux',
-  'docker',
-  'k8s',
-  'cicd',
-  'obs',
-  'sec',
-  'iac',
-  'soporte',
-] as const
+const CORE_PILLARS = [
+  {
+    title: 'Infraestructura',
+    text: 'Diseño y operación de entornos Linux y cloud con foco en estabilidad y escalabilidad.',
+  },
+  {
+    title: 'CI/CD',
+    text: 'Automatización de builds y despliegues para reducir fricción y errores en producción.',
+  },
+  {
+    title: 'Observabilidad',
+    text: 'Métricas, alertas y dashboards para entender el estado real de cada servicio.',
+  },
+]
+
+const QUICK_STATS = [
+  { label: 'Años en IT', value: '10+' },
+  { label: 'Stacks Cloud', value: 'AWS · Azure · GCP' },
+  { label: 'Foco', value: 'Confiabilidad operativa' },
+]
 
 export function HomePage() {
-  const [openSpecialty, setOpenSpecialty] = useState<string | null>(null)
-  const toggleSpecialty = (id: string) => {
-    setOpenSpecialty((cur) => (cur === id ? null : id))
-  }
+  const prefersReducedMotion = useReducedMotion()
+  const featuredProjects = PROJECTS_GRID.slice(0, 3)
+  const featuredStack = TOOLS_SECTIONS.flatMap((section) => section.cards).slice(0, 8)
 
   return (
-    <>
-      <HomeHero />
+    <div className="space-y-20 pb-4">
+      <motion.section
+        initial={prefersReducedMotion ? false : { opacity: 0, y: 24 }}
+        animate={prefersReducedMotion ? { opacity: 1 } : { opacity: 1, y: 0 }}
+        transition={{ duration: 0.72, ease: 'easeOut' }}
+        className="relative overflow-hidden rounded-[2rem] border border-white/10 bg-[radial-gradient(1200px_540px_at_12%_-5%,rgba(34,211,238,.26),transparent_56%),radial-gradient(940px_480px_at_96%_6%,rgba(129,140,248,.2),transparent_58%),linear-gradient(145deg,#020617_0%,#091127_42%,#071a1e_100%)] p-6 shadow-[0_24px_80px_rgba(3,7,18,.52)] md:p-10"
+      >
+        <div className="absolute inset-0 -z-10 opacity-30 [background:linear-gradient(rgba(148,163,184,.16)_1px,transparent_1px),linear-gradient(90deg,rgba(148,163,184,.12)_1px,transparent_1px)] [background-size:30px_30px]" />
 
-      <div className="section-block hiden">
-        <div className="content-title-wrap">
-          <div className="content-title-dot"></div>
-          <h2 className="content-title">Proyectos.</h2>
-          <div className="content-title is-text">destacados.</div>
-        </div>
-        <div className="w-dyn-list">
-          <div role="list" className="_2x-column w-dyn-items">
-            <div role="listitem" className="work-thumb w-dyn-item">
-              <Link to="/project/pygio" className="card w-inline-block">
-                <div className="shine-wrap">
-                  <div className="shine"></div>
-                </div>
-                <div className="project-thumb-portrait">
-                  <img
-                    loading="lazy"
-                    src="https://cdn.prod.website-files.com/66e2e525ff88cd2d1a4c79f8/686ba43f10d360f05a560e02_1440%20(1)%201%20(1).avif"
-                    alt=""
-                    sizes="100vw"
-                    srcSet="https://cdn.prod.website-files.com/66e2e525ff88cd2d1a4c79f8/686ba43f10d360f05a560e02_1440%20(1)%201%20(1)-p-500.avif 500w, https://cdn.prod.website-files.com/66e2e525ff88cd2d1a4c79f8/686ba43f10d360f05a560e02_1440%20(1)%201%20(1)-p-800.avif 800w, https://cdn.prod.website-files.com/66e2e525ff88cd2d1a4c79f8/686ba43f10d360f05a560e02_1440%20(1)%201%20(1).avif 1632w"
-                    className="thumb-image"
-                  />
-                </div>
-                <div className="project-thumb-portrait-info">
-                  <div className="space-beetween">
-                    <div>
-                      <h2 className="card-heading">Pygio</h2>
-                    </div>
-                    <div className="card-meta">
-                      <div className="card-info">
-                        <div className="card-tag is-light">Development</div>
-                      </div>
-                      <div className="card-cta-wrap">
-                        <div className="card-cta">
-                          <CardCtaArrow />
-                        </div>
-                      </div>
-                    </div>
-                  </div>
-                </div>
+        <div className="grid items-center gap-12 lg:grid-cols-[1.1fr_0.9fr]">
+          <div className="space-y-7">
+            <motion.div
+              initial={prefersReducedMotion ? false : { opacity: 0, y: 14 }}
+              animate={prefersReducedMotion ? { opacity: 1 } : { opacity: 1, y: 0 }}
+              transition={{ duration: 0.55, delay: 0.08, ease: 'easeOut' }}
+              className="space-y-3"
+            >
+              <span className="inline-flex items-center gap-2 rounded-full border border-cyan-300/35 bg-cyan-300/10 px-4 py-1.5 text-xs font-semibold uppercase tracking-[0.17em] text-cyan-100">
+                DevOps Portfolio
+              </span>
+              <p className="text-sm text-slate-300 md:text-base">Buenos Aires · OpenToWork</p>
+            </motion.div>
+
+            <motion.div
+              initial={prefersReducedMotion ? false : { opacity: 0, y: 14 }}
+              animate={prefersReducedMotion ? { opacity: 1 } : { opacity: 1, y: 0 }}
+              transition={{ duration: 0.6, delay: 0.18, ease: 'easeOut' }}
+              className="space-y-4"
+            >
+              <h1 className="font-title text-balance text-4xl font-semibold leading-tight text-white md:text-6xl">
+                Infraestructura y DevOps para operar con más claridad.
+              </h1>
+              <p className="max-w-xl text-pretty text-base leading-relaxed text-slate-200 md:text-lg">
+                Trabajo en automatización, despliegues y observabilidad para que los equipos puedan mantener servicios
+                estables y previsibles en producción.
+              </p>
+            </motion.div>
+
+            <motion.div
+              initial={prefersReducedMotion ? false : { opacity: 0, y: 14 }}
+              animate={prefersReducedMotion ? { opacity: 1 } : { opacity: 1, y: 0 }}
+              transition={{ duration: 0.58, delay: 0.28, ease: 'easeOut' }}
+              className="flex flex-wrap items-center gap-3"
+            >
+              <Link to="/contact" className="btn-primary" aria-label="Ir a contacto">
+                Contacto
               </Link>
-            </div>
-            <div role="listitem" className="work-thumb w-dyn-item">
-              <Link to="/project/orbiter" className="card w-inline-block">
-                <div className="shine-wrap">
-                  <div className="shine"></div>
-                </div>
-                <div className="project-thumb-portrait">
-                  <img
-                    loading="lazy"
-                    src="https://cdn.prod.website-files.com/66e2e525ff88cd2d1a4c79f8/67051bf1dfd192c302b524c0_Deskdtop_1920.avif"
-                    alt=""
-                    sizes="100vw"
-                    srcSet="https://cdn.prod.website-files.com/66e2e525ff88cd2d1a4c79f8/67051bf1dfd192c302b524c0_Deskdtop_1920-p-500.avif 500w, https://cdn.prod.website-files.com/66e2e525ff88cd2d1a4c79f8/67051bf1dfd192c302b524c0_Deskdtop_1920-p-800.avif 800w, https://cdn.prod.website-files.com/66e2e525ff88cd2d1a4c79f8/67051bf1dfd192c302b524c0_Deskdtop_1920.avif 1920w"
-                    className="thumb-image"
-                  />
-                </div>
-                <div className="project-thumb-portrait-info">
-                  <div className="space-beetween">
-                    <div>
-                      <h2 className="card-heading">Orbiter</h2>
-                    </div>
-                    <div className="card-meta">
-                      <div className="card-info">
-                        <div className="card-tag is-light">Development</div>
-                      </div>
-                      <div className="card-cta-wrap">
-                        <div className="card-cta">
-                          <CardCtaArrow />
-                        </div>
-                      </div>
-                    </div>
-                  </div>
-                </div>
+              <Link to="/projects" className="btn-secondary" aria-label="Ir a proyectos">
+                Ver proyectos
               </Link>
-            </div>
+            </motion.div>
+
+            <motion.div
+              initial={prefersReducedMotion ? false : { opacity: 0, y: 14 }}
+              animate={prefersReducedMotion ? { opacity: 1 } : { opacity: 1, y: 0 }}
+              transition={{ duration: 0.6, delay: 0.36, ease: 'easeOut' }}
+              className="grid gap-3 sm:grid-cols-3"
+            >
+              {QUICK_STATS.map((stat) => (
+                <article key={stat.label} className="card-glass px-4 py-3">
+                  <p className="text-xs uppercase tracking-[0.12em] text-slate-400">{stat.label}</p>
+                  <p className="mt-1 font-title text-sm text-white md:text-base">{stat.value}</p>
+                </article>
+              ))}
+            </motion.div>
           </div>
-        </div>
-      </div>
 
-      <div className="section-block hiden">
-        <div className="content-title-wrap">
-          <div className="content-title-dot"></div>
-          <h2 className="content-title">Project Selected</h2>
+          <motion.div
+            initial={prefersReducedMotion ? false : { opacity: 0, x: 24, scale: 0.98 }}
+            animate={prefersReducedMotion ? { opacity: 1 } : { opacity: 1, x: 0, scale: 1 }}
+            transition={{ duration: 0.65, delay: 0.22, ease: 'easeOut' }}
+            className="lg:justify-self-end"
+          >
+            <StackCarousel />
+          </motion.div>
         </div>
-        <div className="w-dyn-list">
-          <div role="list" className="collection-list w-dyn-items">
-            <div role="listitem" className="w-dyn-item">
-              <a
-                href="https://www.pygio.com/"
-                target="_blank"
-                rel="noreferrer"
-                className="card w-inline-block"
-              >
-                <div className="shine-wrap">
-                  <div className="shine"></div>
-                </div>
-                <div className="card-content-vertical">
-                  <div className="card-meta">
-                    <div className="card-info">
-                      <div className="card-tag">Development</div>
-                    </div>
-                    <div className="card-cta-wrap">
-                      <div className="card-cta">
-                        <CardCtaArrow />
-                      </div>
-                    </div>
-                  </div>
-                  <div>
-                    <h2 className="card-heading">Pygio</h2>
-                    <div className="card-heading is-text">Transformative and intelligent IT services</div>
-                  </div>
-                  <div className="w-layout-grid thumb-3x-column">
-                    <div className="card-thumb-static-wrap">
-                      <div className="card-thumb">
-                        <img
-                          loading="lazy"
-                          src="https://cdn.prod.website-files.com/66e2e525ff88cd2d1a4c79f8/68b9b1f29f0d533f44945e59_380%20(1).avif"
-                          alt=""
-                          sizes="100vw"
-                          srcSet="https://cdn.prod.website-files.com/66e2e525ff88cd2d1a4c79f8/68b9b1f29f0d533f44945e59_380%20(1)-p-500.avif 500w, https://cdn.prod.website-files.com/66e2e525ff88cd2d1a4c79f8/68b9b1f29f0d533f44945e59_380%20(1)-p-800.avif 800w, https://cdn.prod.website-files.com/66e2e525ff88cd2d1a4c79f8/68b9b1f29f0d533f44945e59_380%20(1)-p-1080.avif 1080w, https://cdn.prod.website-files.com/66e2e525ff88cd2d1a4c79f8/68b9b1f29f0d533f44945e59_380%20(1)-p-1600.avif 1600w, https://cdn.prod.website-files.com/66e2e525ff88cd2d1a4c79f8/68b9b1f29f0d533f44945e59_380%20(1)-p-2000.avif 2000w, https://cdn.prod.website-files.com/66e2e525ff88cd2d1a4c79f8/68b9b1f29f0d533f44945e59_380%20(1).avif 3840w"
-                          className="thumb-image"
-                        />
-                      </div>
-                    </div>
-                    <div className="card-thumb-static-wrap hide-portrait">
-                      <div className="card-thumb">
-                        <img
-                          loading="lazy"
-                          src="https://cdn.prod.website-files.com/66e2e525ff88cd2d1a4c79f8/68b9b414fa0d3194ddc016b2_1922%20(1).png"
-                          alt=""
-                          sizes="100vw"
-                          srcSet="https://cdn.prod.website-files.com/66e2e525ff88cd2d1a4c79f8/68b9b414fa0d3194ddc016b2_1922%20(1)-p-500.png 500w, https://cdn.prod.website-files.com/66e2e525ff88cd2d1a4c79f8/68b9b414fa0d3194ddc016b2_1922%20(1)-p-800.png 800w, https://cdn.prod.website-files.com/66e2e525ff88cd2d1a4c79f8/68b9b414fa0d3194ddc016b2_1922%20(1)-p-1080.png 1080w, https://cdn.prod.website-files.com/66e2e525ff88cd2d1a4c79f8/68b9b414fa0d3194ddc016b2_1922%20(1)-p-1600.png 1600w, https://cdn.prod.website-files.com/66e2e525ff88cd2d1a4c79f8/68b9b414fa0d3194ddc016b2_1922%20(1)-p-2000.png 2000w, https://cdn.prod.website-files.com/66e2e525ff88cd2d1a4c79f8/68b9b414fa0d3194ddc016b2_1922%20(1).png 2880w"
-                          className="thumb-image"
-                        />
-                      </div>
-                    </div>
-                    <div className="card-thumb-static-wrap hide-portrait">
-                      <div className="card-thumb">
-                        <img
-                          loading="lazy"
-                          src="https://cdn.prod.website-files.com/66e2e525ff88cd2d1a4c79f8/68b9b361a7b695b15a553c09_1922.png"
-                          alt=""
-                          sizes="100vw"
-                          srcSet="https://cdn.prod.website-files.com/66e2e525ff88cd2d1a4c79f8/68b9b361a7b695b15a553c09_1922-p-500.png 500w, https://cdn.prod.website-files.com/66e2e525ff88cd2d1a4c79f8/68b9b361a7b695b15a553c09_1922-p-800.png 800w, https://cdn.prod.website-files.com/66e2e525ff88cd2d1a4c79f8/68b9b361a7b695b15a553c09_1922-p-1080.png 1080w, https://cdn.prod.website-files.com/66e2e525ff88cd2d1a4c79f8/68b9b361a7b695b15a553c09_1922-p-1600.png 1600w, https://cdn.prod.website-files.com/66e2e525ff88cd2d1a4c79f8/68b9b361a7b695b15a553c09_1922-p-2000.png 2000w, https://cdn.prod.website-files.com/66e2e525ff88cd2d1a4c79f8/68b9b361a7b695b15a553c09_1922-p-2600.png 2600w, https://cdn.prod.website-files.com/66e2e525ff88cd2d1a4c79f8/68b9b361a7b695b15a553c09_1922.png 2880w"
-                          className="thumb-image"
-                        />
-                      </div>
-                    </div>
-                  </div>
-                </div>
-              </a>
-            </div>
-            <div role="listitem" className="w-dyn-item">
-              <a href="https://tea.xyz/" target="_blank" rel="noreferrer" className="card w-inline-block">
-                <div className="shine-wrap">
-                  <div className="shine"></div>
-                </div>
-                <div className="card-content-vertical">
-                  <div className="card-meta">
-                    <div className="card-info">
-                      <div className="card-tag">Development</div>
-                    </div>
-                    <div className="card-cta-wrap">
-                      <div className="card-cta">
-                        <CardCtaArrow />
-                      </div>
-                    </div>
-                  </div>
-                  <div>
-                    <h2 className="card-heading">Infraestructura y DevOps</h2>
-                    <div className="card-heading is-text">
-                      Experiencia en Linux Server, Docker, Kubernetes, Jenkins, GitHub Actions y observabilidad con
-                      Prometheus/Grafana.
-                    </div>
-                  </div>
-                  <div className="w-layout-grid thumb-3x-column">
-                    <div className="card-thumb-static-wrap">
-                      <div className="card-thumb">
-                        <img
-                          loading="lazy"
-                          src="https://cdn.prod.website-files.com/66e2e525ff88cd2d1a4c79f8/66e2e525ff88cd2d1a4c7ab9_Desktop0.5x%20-%20Homepage.avif"
-                          alt=""
-                          sizes="100vw"
-                          srcSet="https://cdn.prod.website-files.com/66e2e525ff88cd2d1a4c79f8/66e2e525ff88cd2d1a4c7ab9_Desktop0.5x%2520-%2520Homepage-p-500.avif 500w, https://cdn.prod.website-files.com/66e2e525ff88cd2d1a4c79f8/66e2e525ff88cd2d1a4c7ab9_Desktop0.5x%20-%20Homepage.avif 763w"
-                          className="thumb-image"
-                        />
-                      </div>
-                    </div>
-                    <div className="card-thumb-static-wrap hide-portrait">
-                      <div className="card-thumb">
-                        <img
-                          loading="lazy"
-                          src="https://cdn.prod.website-files.com/66e2e525ff88cd2d1a4c79f8/66e2e525ff88cd2d1a4c7aba_Desktop0.5x%20-%20Rewards%20for%20OSS%20Contributions.avif"
-                          alt=""
-                          sizes="100vw"
-                          srcSet="https://cdn.prod.website-files.com/66e2e525ff88cd2d1a4c79f8/66e2e525ff88cd2d1a4c7aba_Desktop0.5x%2520-%2520Rewards%2520for%2520OSS%2520Contributions-p-500.avif 500w, https://cdn.prod.website-files.com/66e2e525ff88cd2d1a4c79f8/66e2e525ff88cd2d1a4c7aba_Desktop0.5x%20-%20Rewards%20for%20OSS%20Contributions.avif 720w"
-                          className="thumb-image"
-                        />
-                      </div>
-                    </div>
-                    <div className="card-thumb-static-wrap hide-portrait">
-                      <div className="card-thumb">
-                        <img
-                          loading="lazy"
-                          src="https://cdn.prod.website-files.com/66e2e525ff88cd2d1a4c79f8/66e2e525ff88cd2d1a4c7abb_%3D--.avif"
-                          alt=""
-                          sizes="100vw"
-                          srcSet="https://cdn.prod.website-files.com/66e2e525ff88cd2d1a4c79f8/66e2e525ff88cd2d1a4c7abb_%253D---p-500.avif 500w, https://cdn.prod.website-files.com/66e2e525ff88cd2d1a4c79f8/66e2e525ff88cd2d1a4c7abb_%3D--.avif 734w"
-                          className="thumb-image"
-                        />
-                      </div>
-                    </div>
-                  </div>
-                </div>
-              </a>
-            </div>
+      </motion.section>
+
+      <section className="space-y-6" aria-labelledby="core-pillars-title">
+        <div className="flex flex-wrap items-end justify-between gap-4">
+          <div className="space-y-2">
+            <p className="kicker">Servicios</p>
+            <h2 id="core-pillars-title" className="section-title">
+              Qué hago en el día a día
+            </h2>
           </div>
+          <Link to="/about" className="btn-secondary" aria-label="Ir a sobre mí">
+            Sobre mí
+          </Link>
         </div>
-      </div>
 
-      <div className="block-divider section-separator"></div>
-
-      <div className="section-block">
-        <div className="content-title-wrap">
-          <div className="content-title-dot"></div>
-          <h2 className="content-title">Especialidades</h2>
+        <div className="grid gap-4 md:grid-cols-3">
+          {CORE_PILLARS.map((pillar, index) => (
+            <motion.article
+              key={pillar.title}
+              initial={prefersReducedMotion ? false : { opacity: 0, y: 16 }}
+              whileInView={prefersReducedMotion ? { opacity: 1 } : { opacity: 1, y: 0 }}
+              whileHover={prefersReducedMotion ? undefined : { y: -6 }}
+              viewport={{ once: true, amount: 0.2 }}
+              transition={{ duration: 0.5, delay: index * 0.07, ease: [0.22, 1, 0.36, 1] }}
+              className="card-soft"
+            >
+              <h3 className="font-title text-xl text-white">{pillar.title}</h3>
+              <p className="mt-3 text-sm leading-relaxed text-[var(--text-muted)]">{pillar.text}</p>
+            </motion.article>
+          ))}
         </div>
-        <div
-          id="w-node-c9c4da76-01ab-03d8-eb75-aa92a01404fc-1a4c79d3"
-          className="w-layout-hflex flex-block specialties-grid"
-        >
-          <div className="accordion-list specialties-column">
-            <FaqAccordionItem
-              variant="specialties"
-              open={openSpecialty === SPECIALTY_IDS[0]}
-              onToggle={() => toggleSpecialty(SPECIALTY_IDS[0])}
-              title={<strong>Administracion de Linux Server</strong>}
-            >
-              Administracion de servidores Linux en produccion: hardening, gestion de usuarios y permisos, operacion
-              segura, diagnostico de fallas y automatizacion de tareas para mejorar estabilidad y rendimiento.
-            </FaqAccordionItem>
-            <FaqAccordionItem
-              variant="specialties"
-              open={openSpecialty === SPECIALTY_IDS[1]}
-              onToggle={() => toggleSpecialty(SPECIALTY_IDS[1])}
-              title={<strong>Docker y Contenerizacion</strong>}
-            >
-              Diseno y opero entornos containerizados con Docker para estandarizar desarrollo y produccion, reducir
-              errores por diferencias de entorno y acelerar despliegues.
-            </FaqAccordionItem>
-            <FaqAccordionItem
-              variant="specialties"
-              open={openSpecialty === SPECIALTY_IDS[2]}
-              onToggle={() => toggleSpecialty(SPECIALTY_IDS[2])}
-              title={<strong>Operaciones con Kubernetes</strong>}
-            >
-              Gestion de clusters Kubernetes: deployments, ingress, config/secrets, autoscaling y resolucion de
-              incidentes para sostener disponibilidad, escalabilidad y confiabilidad operativa.
-            </FaqAccordionItem>
-            <FaqAccordionItem
-              variant="specialties"
-              open={openSpecialty === SPECIALTY_IDS[3]}
-              onToggle={() => toggleSpecialty(SPECIALTY_IDS[3])}
-              title={<strong>CI/CD Pipelines</strong>}
-            >
-              Implementacion de pipelines CI/CD con validaciones, testing, build, controles de calidad y despliegues
-              automatizados para entregar cambios con mayor velocidad y trazabilidad.
-            </FaqAccordionItem>
+      </section>
+
+      <section className="space-y-6" aria-labelledby="featured-projects-title">
+        <div className="flex flex-wrap items-end justify-between gap-4">
+          <div className="space-y-2">
+            <p className="kicker">Proyectos</p>
+            <h2 id="featured-projects-title" className="section-title">
+              Selección destacada
+            </h2>
           </div>
-          <div className="accordion-list specialties-column">
-            <FaqAccordionItem
-              variant="specialties"
-              open={openSpecialty === SPECIALTY_IDS[4]}
-              onToggle={() => toggleSpecialty(SPECIALTY_IDS[4])}
-              title={<strong>Observabilidad</strong>}
-            >
-              Implementacion de metricas, logs y alertas con Prometheus y Grafana para detectar desviaciones temprano,
-              acortar tiempos de respuesta y mejorar la salud de los servicios.
-            </FaqAccordionItem>
-            <FaqAccordionItem
-              variant="specialties"
-              open={openSpecialty === SPECIALTY_IDS[5]}
-              onToggle={() => toggleSpecialty(SPECIALTY_IDS[5])}
-              title={<strong>Seguridad y Hardening</strong>}
-            >
-              Endurecimiento de infraestructura y pipelines mediante gestion de secretos, control de accesos,
-              cumplimiento de procedimientos y buenas practicas de seguridad en todo el ciclo de entrega.
-            </FaqAccordionItem>
-            <FaqAccordionItem
-              variant="specialties"
-              open={openSpecialty === SPECIALTY_IDS[6]}
-              onToggle={() => toggleSpecialty(SPECIALTY_IDS[6])}
-              title={<strong>Automatizacion de Infraestructura</strong>}
-            >
-              Provisioning con IaC (Terraform), estandarizacion de entornos y automatizacion de tareas repetitivas para
-              reducir errores manuales, mejorar consistencia y facilitar escalado.
-            </FaqAccordionItem>
-            <FaqAccordionItem
-              variant="specialties"
-              open={openSpecialty === SPECIALTY_IDS[7]}
-              onToggle={() => toggleSpecialty(SPECIALTY_IDS[7])}
-              title={<strong>Soporte y Mejora Continua</strong>}
-            >
-              Soporte post-lanzamiento con enfoque en confiabilidad operativa: analisis de incidentes, optimizacion de
-              rendimiento y mejora continua basada en datos reales.
-            </FaqAccordionItem>
-          </div>
+          <Link to="/projects" className="btn-secondary" aria-label="Ver todos los proyectos">
+            Todos los proyectos
+          </Link>
         </div>
-      </div>
 
-      <div className="block-divider"></div>
-
-      <div className="section-block tools-section">
-        <div className="content-title-wrap">
-          <div className="content-title-dot"></div>
-          <h2 className="content-title">Tools</h2>
+        <div className="grid gap-5 md:grid-cols-3">
+          {featuredProjects.map((project, index) => (
+            <motion.a
+              key={project.href}
+              href={project.href}
+              target="_blank"
+              rel="noreferrer"
+              initial={prefersReducedMotion ? false : { opacity: 0, y: 14 }}
+              whileInView={prefersReducedMotion ? { opacity: 1 } : { opacity: 1, y: 0 }}
+              whileHover={prefersReducedMotion ? undefined : { y: -6 }}
+              viewport={{ once: true, amount: 0.2 }}
+              transition={{ duration: 0.52, delay: index * 0.06, ease: [0.22, 1, 0.36, 1] }}
+              className="group overflow-hidden rounded-3xl border border-white/10 bg-[#0b1222]"
+              aria-label={`Abrir proyecto ${project.title}`}
+            >
+              <div className="relative h-52 overflow-hidden">
+                <img
+                  src={project.image}
+                  alt={`Vista previa de ${project.title}`}
+                  className="h-full w-full object-cover transition duration-700 group-hover:scale-105"
+                />
+                <div className="absolute inset-0 bg-gradient-to-t from-[#030712] via-transparent to-transparent" />
+              </div>
+              <div className="p-5">
+                <h3 className="font-title text-xl text-white">{project.title}</h3>
+              </div>
+            </motion.a>
+          ))}
         </div>
-        <div className="w-layout-grid _2x-column">
-          <a href="https://git-scm.com/" target="_blank" rel="noreferrer" className="card w-inline-block">
-            <div className="shine-wrap">
-              <div className="shine"></div>
-            </div>
-            <div className="card-content-vertical">
-              <div className="tools-head-long">
-                <div className="app-wrap">
-                  <img
-                    src="/assets/icons/git.svg"
-                    loading="lazy"
-                    alt="Git"
-                    className="sidebar-header-avatar"
-                  />
-                </div>
-                <div className="card-cta-wrap">
-                  <div className="card-badge is-orange">Favorite</div>
-                  <div className="card-cta">
-                    <CardCtaArrow />
-                  </div>
-                </div>
-              </div>
-              <div>
-                <h2 className="card-heading">Git</h2>
-                <div>Gestiono versionado y flujo de ramas para colaborar con seguridad en cada entrega.</div>
-              </div>
-            </div>
-          </a>
-          <div className="_1x-column">
-            <a href="https://www.terraform.io/" target="_blank" rel="noreferrer" className="card w-inline-block">
-              <div className="shine-wrap">
-                <div className="shine"></div>
-              </div>
-              <div className="card-content-vertical">
-                <div className="tools">
-                  <div className="tools-head">
-                    <div className="tools-icon">
-                      <img src="/assets/icons/terraform.svg" loading="lazy" alt="Terraform" className="image-background" />
-                    </div>
-                    <div>
-                      <h2 className="card-heading">Terraform</h2>
-                    </div>
-                  </div>
-                  <div className="card-text-2-lines">
-                    Defino infraestructura como codigo para estandarizar entornos y escalar cambios con control.
-                  </div>
-                </div>
-                <div className="card-meta">
-                  <div className="card-info">
-                    <div className="card-tag">IaC</div>
-                    <div className="card-tag">Automatizacion</div>
-                    <div className="card-tag">Cloud</div>
-                  </div>
-                  <div className="card-cta">
-                    <CardCtaArrow />
-                  </div>
-                </div>
-              </div>
-            </a>
-            <a href="https://kubernetes.io/" target="_blank" rel="noreferrer" className="card w-inline-block">
-              <div className="shine-wrap">
-                <div className="shine"></div>
-              </div>
-              <div className="card-content-vertical">
-                <div className="tools">
-                  <div className="tools-head">
-                    <div className="tools-icon">
-                      <img
-                        src="/assets/icons/kubernetes.svg"
-                        loading="lazy"
-                        alt="Kubernetes"
-                        className="image-background"
-                      />
-                    </div>
-                    <div>
-                      <h2 className="card-heading">Kubernetes</h2>
-                    </div>
-                  </div>
-                  <div className="card-text-2-lines">
-                    Orquesto workloads con escalado, alta disponibilidad y control operativo en produccion.
-                  </div>
-                </div>
-                <div className="card-meta">
-                  <div className="card-info">
-                    <div className="card-tag">Orquestacion</div>
-                    <div className="card-tag">Escalado</div>
-                    <div className="card-tag">SRE</div>
-                  </div>
-                  <div className="card-cta">
-                    <CardCtaArrow />
-                  </div>
-                </div>
-              </div>
-            </a>
-          </div>
-        </div>
-      </div>
+      </section>
 
-      <div className="block-divider"></div>
-
-      <div className="section-block">
-        <div className="content-title-wrap">
-          <div className="content-title-dot"></div>
-          <h2 className="content-title">Contacto directo</h2>
+      <section className="space-y-6" aria-labelledby="stack-preview-title">
+        <div className="space-y-2">
+          <p className="kicker">Stack</p>
+          <h2 id="stack-preview-title" className="section-title">
+            Herramientas con las que trabajo
+          </h2>
         </div>
-        <ContactDirectGrid />
-      </div>
-    </>
+
+        <div className="grid gap-3 sm:grid-cols-2 lg:grid-cols-4">
+          {featuredStack.map((tool, index) => (
+            <motion.div
+              key={`${tool.title}-${index}`}
+              initial={prefersReducedMotion ? false : { opacity: 0, y: 12 }}
+              whileInView={prefersReducedMotion ? { opacity: 1 } : { opacity: 1, y: 0 }}
+              whileHover={prefersReducedMotion ? undefined : { y: -4 }}
+              viewport={{ once: true, amount: 0.2 }}
+              transition={{ duration: 0.45, delay: index * 0.03, ease: [0.22, 1, 0.36, 1] }}
+              className="flex items-center gap-3 rounded-2xl border border-white/10 bg-white/[0.03] px-3 py-3"
+              aria-label={tool.title}
+            >
+              <div className="grid h-9 w-9 place-items-center rounded-lg border border-white/10 bg-slate-950/60">
+                <img src={tool.icon} alt={tool.title} className="h-5 w-5 object-contain" />
+              </div>
+              <span className="text-sm text-slate-200">{tool.title}</span>
+            </motion.div>
+          ))}
+        </div>
+      </section>
+
+      <OpenToWorkCard />
+    </div>
   )
 }
