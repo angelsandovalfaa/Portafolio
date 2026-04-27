@@ -86,6 +86,7 @@ export function ContactPage() {
 
     try {
       const templateParams = {
+        name,
         from_name: name,
         from_email: email,
         sender_email: email,
