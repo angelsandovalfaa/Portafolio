@@ -1,4 +1,7 @@
-import { motion, useReducedMotion } from 'framer-motion'
+import { useEffect, useState } from 'react'
+import type { FormEvent } from 'react'
+import emailjs from '@emailjs/browser'
+import { AnimatePresence, motion, useReducedMotion } from 'framer-motion'
 
 const CONTACTS = [
   {
@@ -15,7 +18,7 @@ const CONTACTS = [
   },
   {
     label: 'LinkedIn',
-    value: 'angel-eduardo-sandoval',
+    value: 'Angel Eduardo Sandoval',
     note: 'Perfil profesional',
     href: 'http://www.linkedin.com/in/angel-eduardo-sandoval',
     icon: (
@@ -42,8 +45,98 @@ const CONTACTS = [
 
 const TOPICS = ['Infraestructura', 'CI/CD', 'Observabilidad', 'Automatización', 'Otro']
 
+const EMAILJS_SERVICE_ID = 'service_ckpb9rp'
+const EMAILJS_TEMPLATE_ID = 'template_jn3amwi'
+const EMAILJS_PUBLIC_KEY = 'yyJZxxnQt7mnJDpFK'
+
 export function ContactPage() {
   const prefersReducedMotion = useReducedMotion()
+  const [isSending, setIsSending] = useState(false)
+  const [feedback, setFeedback] = useState<{
+    open: boolean
+    type: 'success' | 'error'
+    message: string
+  }>({
+    open: false,
+    type: 'success',
+    message: '',
+  })
+
+  useEffect(() => {
+    if (!feedback.open) return
+    const timer = window.setTimeout(() => {
+      setFeedback((prev) => ({ ...prev, open: false }))
+    }, 4800)
+    return () => window.clearTimeout(timer)
+  }, [feedback.open])
+
+  const handleSubmit = async (event: FormEvent<HTMLFormElement>) => {
+    event.preventDefault()
+    setIsSending(true)
+    setFeedback((prev) => ({ ...prev, open: false, message: '' }))
+
+    const form = event.currentTarget
+    const formData = new FormData(form)
+    const name = (formData.get('name') as string | null)?.trim() ?? ''
+    const email = (formData.get('email') as string | null)?.trim() ?? ''
+    const selectedTopic = (formData.get('topic') as string | null)?.trim() ?? ''
+    const topic = selectedTopic || 'Otro'
+    const message = (formData.get('message') as string | null)?.trim() ?? ''
+
+    try {
+      const templateParams = {
+        from_name: name,
+        name,
+        user_name: name,
+        from_email: email,
+        email,
+        user_email: email,
+        reply_to: email,
+        topic,
+        tema: topic,
+        selected_topic: topic,
+        subject: topic || 'Contacto desde portfolio',
+        message,
+        to_name: 'Ángel Sandoval',
+        to_email: 'angelsandovalfaa@gmail.com',
+      }
+
+      await emailjs.send(
+        EMAILJS_SERVICE_ID,
+        EMAILJS_TEMPLATE_ID,
+        templateParams,
+        { publicKey: EMAILJS_PUBLIC_KEY },
+      )
+      setFeedback({
+        open: true,
+        type: 'success',
+        message: 'Mensaje enviado. Gracias por escribir.',
+      })
+      form.reset()
+    } catch (error) {
+      console.error('MailJS error:', error)
+      const response = error as { status?: number; text?: string }
+      if (response?.status === 412) {
+        setFeedback({
+          open: true,
+          type: 'error',
+          message:
+            'El servicio de correo está desconfigurado (Gmail). Reconectá la cuenta en EmailJS y otorgá permisos nuevamente.',
+        })
+      } else {
+        setFeedback({
+          open: true,
+          type: 'error',
+          message: 'No se pudo enviar. Probá nuevamente en unos minutos.',
+        })
+      }
+    } finally {
+      setIsSending(false)
+    }
+  }
+
+  const isSuccessFeedback = feedback.type === 'success'
+  const feedbackTitle = isSuccessFeedback ? 'Mensaje enviado' : 'No se pudo enviar'
 
   return (
     <section className="space-y-8" aria-labelledby="contact-title">
@@ -120,6 +213,7 @@ export function ContactPage() {
         </motion.aside>
 
         <motion.form
+          onSubmit={handleSubmit}
           initial={prefersReducedMotion ? false : { opacity: 0, y: 16 }}
           whileInView={prefersReducedMotion ? { opacity: 1 } : { opacity: 1, y: 0 }}
           viewport={{ once: true, amount: 0.2 }}
@@ -132,7 +226,7 @@ export function ContactPage() {
           <div className="grid gap-4 sm:grid-cols-2">
             <label className="form-field" htmlFor="name">
               Nombre
-              <input id="name" name="name" type="text" placeholder="Tu nombre" className="input" />
+              <input id="name" name="name" type="text" placeholder="Tu nombre" className="input" required />
             </label>
 
             <label className="form-field" htmlFor="email">
@@ -143,12 +237,14 @@ export function ContactPage() {
 
           <label className="form-field" htmlFor="topic">
             Tema
-            <select id="topic" name="topic" className="input" defaultValue="">
+            <select id="topic" name="topic" className="input" defaultValue="" required>
               <option value="" disabled>
                 Seleccionar tema
               </option>
               {TOPICS.map((topic) => (
-                <option key={topic}>{topic}</option>
+                <option key={topic} value={topic}>
+                  {topic}
+                </option>
               ))}
             </select>
           </label>
@@ -161,14 +257,90 @@ export function ContactPage() {
               rows={5}
               placeholder="Contame brevemente tu consulta"
               className="input resize-none"
+              required
             />
           </label>
 
-          <button type="submit" className="btn-primary w-full" aria-label="Enviar formulario de contacto">
-            Enviar
+          <button
+            type="submit"
+            disabled={isSending}
+            className="btn-primary w-full disabled:cursor-not-allowed disabled:opacity-70"
+            aria-label="Enviar formulario de contacto"
+          >
+            {isSending ? 'Enviando...' : 'Enviar'}
           </button>
+
         </motion.form>
       </div>
+
+      <AnimatePresence>
+        {feedback.open ? (
+          <motion.div
+            initial={prefersReducedMotion ? false : { opacity: 0 }}
+            animate={{ opacity: 1 }}
+            exit={{ opacity: 0 }}
+            transition={{ duration: 0.42, ease: [0.22, 1, 0.36, 1] }}
+            className="fixed inset-0 z-50 grid place-items-center bg-slate-950/55 p-4 backdrop-blur-[2px]"
+            role="alertdialog"
+            aria-live="polite"
+            aria-label={feedback.type === 'success' ? 'Mensaje enviado' : 'Error al enviar mensaje'}
+            onClick={() => setFeedback((prev) => ({ ...prev, open: false }))}
+          >
+            <motion.div
+              initial={prefersReducedMotion ? false : { opacity: 0, y: 14, scale: 0.98 }}
+              animate={prefersReducedMotion ? { opacity: 1 } : { opacity: 1, y: 0, scale: 1 }}
+              exit={prefersReducedMotion ? { opacity: 0 } : { opacity: 0, y: 8, scale: 0.98 }}
+              transition={{ duration: 0.36, ease: [0.22, 1, 0.36, 1] }}
+              className={`relative w-[min(92vw,460px)] overflow-hidden rounded-3xl border bg-[linear-gradient(155deg,#0d1729,#081223)] p-5 text-slate-100 shadow-[0_20px_70px_-24px_rgba(2,6,23,.85)] backdrop-blur-xl ${
+                isSuccessFeedback ? 'border-emerald-300/30' : 'border-rose-300/30'
+              }`}
+              onClick={(event) => event.stopPropagation()}
+            >
+              <div
+                className={`pointer-events-none absolute inset-x-0 top-0 h-[2px] ${
+                  isSuccessFeedback
+                    ? 'bg-gradient-to-r from-emerald-300/10 via-emerald-300/90 to-emerald-300/10'
+                    : 'bg-gradient-to-r from-rose-300/10 via-rose-300/90 to-rose-300/10'
+                }`}
+                aria-hidden="true"
+              />
+
+              <div className="flex items-start gap-4">
+                <span
+                  className={`mt-0.5 grid h-10 w-10 shrink-0 place-items-center rounded-full border text-sm font-semibold ${
+                    isSuccessFeedback
+                      ? 'border-emerald-200/25 bg-emerald-300/10 text-emerald-200'
+                      : 'border-rose-200/25 bg-rose-300/10 text-rose-200'
+                  }`}
+                  aria-hidden="true"
+                >
+                  {isSuccessFeedback ? 'OK' : '!'}
+                </span>
+
+                <div className="min-w-0 flex-1">
+                  <p className="font-title text-lg text-white">{feedbackTitle}</p>
+                  <p className="mt-1 text-sm leading-relaxed text-slate-300">{feedback.message}</p>
+                </div>
+              </div>
+
+              <div className="mt-5 flex justify-end">
+                <button
+                  type="button"
+                  onClick={() => setFeedback((prev) => ({ ...prev, open: false }))}
+                  className={`rounded-xl border px-4 py-2 text-sm font-medium transition ${
+                    isSuccessFeedback
+                      ? 'border-emerald-200/25 bg-emerald-300/10 text-emerald-100 hover:bg-emerald-300/15'
+                      : 'border-rose-200/25 bg-rose-300/10 text-rose-100 hover:bg-rose-300/15'
+                  }`}
+                  aria-label="Cerrar notificación"
+                >
+                  Entendido
+                </button>
+              </div>
+            </motion.div>
+          </motion.div>
+        ) : null}
+      </AnimatePresence>
     </section>
   )
 }
