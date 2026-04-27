@@ -86,11 +86,7 @@ export function ContactPage() {
     try {
       const templateParams = {
         from_name: name,
-        name,
-        user_name: name,
         from_email: email,
-        email,
-        user_email: email,
         reply_to: email,
         topic,
         tema: topic,
@@ -98,7 +94,7 @@ export function ContactPage() {
         subject: topic || 'Contacto desde portfolio',
         message,
         to_name: 'Ángel Sandoval',
-        to_email: 'angelsandovalfaa@gmail.com',
+        recipient_email: 'angelsandovalfaa@gmail.com',
       }
 
       await emailjs.send(
