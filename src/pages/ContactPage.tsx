@@ -48,6 +48,7 @@ const TOPICS = ['Infraestructura', 'CI/CD', 'Observabilidad', 'Automatización',
 const EMAILJS_SERVICE_ID = 'service_ckpb9rp'
 const EMAILJS_TEMPLATE_ID = 'template_jn3amwi'
 const EMAILJS_PUBLIC_KEY = 'yyJZxxnQt7mnJDpFK'
+const OWNER_EMAIL = 'angelsandovalfaa@gmail.com'
 
 export function ContactPage() {
   const prefersReducedMotion = useReducedMotion()
@@ -87,6 +88,7 @@ export function ContactPage() {
       const templateParams = {
         from_name: name,
         from_email: email,
+        sender_email: email,
         reply_to: email,
         topic,
         tema: topic,
@@ -94,7 +96,10 @@ export function ContactPage() {
         subject: topic || 'Contacto desde portfolio',
         message,
         to_name: 'Ángel Sandoval',
-        recipient_email: 'angelsandovalfaa@gmail.com',
+        to_email: OWNER_EMAIL,
+        recipient_email: OWNER_EMAIL,
+        email: OWNER_EMAIL,
+        user_email: OWNER_EMAIL,
       }
 
       await emailjs.send(
