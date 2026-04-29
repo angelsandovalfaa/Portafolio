@@ -146,6 +146,13 @@ export const TOOLS_SECTIONS: ToolsSectionData[] = [
         tags: ['IaC', 'Provisioning', 'Cloud'],
       },
       {
+        href: 'https://opentofu.org/',
+        icon: '/assets/icons/opentofu.svg',
+        title: 'OpenTofu',
+        desc: 'Alternativa open source de IaC compatible con flujos Terraform para entornos reproducibles.',
+        tags: ['IaC', 'Provisioning', 'Cloud'],
+      },
+      {
         href: 'https://aws.amazon.com/',
         icon: '/assets/icons/aws.svg',
         title: 'AWS',

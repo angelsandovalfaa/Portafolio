@@ -2,7 +2,7 @@ document.addEventListener("DOMContentLoaded", function () {
   var profile = {
     heading: "Ángel Eduardo Sandoval",
     intro: [
-      "DevOps | SysAdmin | IT | Linux | Git | AWS | Azure | GCP | Docker | Kubernetes | Terraform | Jenkins | GitHub Actions | Prometheus | Grafana.",
+      "DevOps | SysAdmin | IT | Linux | Git | AWS | Azure | GCP | Docker | Kubernetes | Terraform | OpenTofu | Jenkins | GitHub Actions | Prometheus | Grafana.",
       "",
       "Soy un profesional de IT con foco en infraestructura, sistemas y operaciones, con experiencia en la administración de entornos productivos y automatización de procesos.",
       "",
@@ -15,7 +15,7 @@ document.addEventListener("DOMContentLoaded", function () {
       },
       {
         title: "Especialización técnica",
-        body: "Linux, Git, Docker, Kubernetes, Terraform, Jenkins, GitHub Actions, Prometheus, Grafana, AWS, Azure y GCP. Experiencia en administración de infraestructura, virtualización, operaciones y prácticas DevOps."
+        body: "Linux, Git, Docker, Kubernetes, Terraform, OpenTofu, Jenkins, GitHub Actions, Prometheus, Grafana, AWS, Azure y GCP. Experiencia en administración de infraestructura, virtualización, operaciones y prácticas DevOps."
       },
       {
         title: "Educación formal",

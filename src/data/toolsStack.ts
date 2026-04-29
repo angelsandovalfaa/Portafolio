@@ -99,6 +99,13 @@ export const TOOLS_STACK: ToolStackItem[] = [
     desc: 'Infraestructura como código para provisión reproducible, auditable y escalable.',
   },
   {
+    title: 'OpenTofu',
+    icon: '/assets/icons/opentofu.svg',
+    href: 'https://opentofu.org/',
+    tags: ['IaC', 'Provisioning', 'Cloud'],
+    desc: 'Alternativa open source para infraestructura como código, compatible con flujos Terraform.',
+  },
+  {
     title: 'AWS',
     icon: '/assets/icons/aws.svg',
     href: 'https://aws.amazon.com/',

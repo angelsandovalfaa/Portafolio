@@ -30,13 +30,13 @@ const TIMELINE = [
   {
     period: '2022 - Hoy',
     role: 'DevOps e infraestructura moderna',
-    detail: 'Linux, Docker, Kubernetes, Terraform, cloud y observabilidad.',
+    detail: 'Linux, Docker, Kubernetes, Terraform/OpenTofu, cloud y observabilidad.',
   },
 ]
 
 const VALUES = ['Orden técnico', 'Responsabilidad', 'Trabajo en equipo', 'Aprendizaje continuo', 'Comunicación clara']
 
-const STACK = ['Linux', 'Docker', 'Kubernetes', 'Terraform', 'AWS', 'Azure', 'GCP', 'Jenkins', 'GitHub Actions', 'Prometheus', 'Grafana']
+const STACK = ['Linux', 'Docker', 'Kubernetes', 'Terraform', 'OpenTofu', 'AWS', 'Azure', 'GCP', 'Jenkins', 'GitHub Actions', 'Prometheus', 'Grafana']
 
 export function AboutPage() {
   const prefersReducedMotion = useReducedMotion()
