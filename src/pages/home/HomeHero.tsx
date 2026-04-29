@@ -51,6 +51,9 @@ export function HomeHero() {
                 <div className="kapstan-node" data-tip="Terraform">
                   <img src="/assets/icons/terraform.svg" alt="Terraform" />
                 </div>
+                <div className="kapstan-node" data-tip="OpenTofu">
+                  <img src="/assets/icons/opentofu.svg" alt="OpenTofu" />
+                </div>
                 <div className="kapstan-node" data-tip="Kubernetes">
                   <img src="/assets/icons/kubernetes.svg" alt="Kubernetes" />
                 </div>

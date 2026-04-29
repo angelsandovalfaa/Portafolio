@@ -16,6 +16,7 @@ const COL_TWO: StackIcon[] = [
   { label: 'Prometheus', src: '/assets/icons/prometheus.svg' },
   { label: 'AWS', src: '/assets/icons/aws.svg' },
   { label: 'Terraform', src: '/assets/icons/terraform.svg' },
+  { label: 'OpenTofu', src: '/assets/icons/opentofu.svg' },
   { label: 'Kubernetes', src: '/assets/icons/kubernetes.svg' },
 ]
 
