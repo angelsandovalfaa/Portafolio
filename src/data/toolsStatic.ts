@@ -119,6 +119,13 @@ export const TOOLS_SECTIONS: ToolsSectionData[] = [
         tags: ['CI/CD', 'Build', 'Pipelines'],
       },
       {
+        href: 'https://www.postman.com/',
+        icon: '/assets/icons/postman.svg',
+        title: 'Postman',
+        desc: 'Pruebas y documentacion de APIs para validar integraciones y acelerar la colaboracion.',
+        tags: ['API', 'Testing', 'Colaboracion'],
+      },
+      {
         href: 'https://about.gitlab.com/',
         icon: '/assets/icons/gitlab.svg',
         title: 'GitLab',

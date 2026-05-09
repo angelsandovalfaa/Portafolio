@@ -38,6 +38,9 @@ export function HomeHero() {
                 <div className="kapstan-node" data-tip="Jenkins">
                   <img src="/assets/icons/jenkins.svg" alt="Jenkins" />
                 </div>
+                <div className="kapstan-node" data-tip="Postman">
+                  <img src="/assets/icons/postman.svg" alt="Postman" />
+                </div>
                 <div className="kapstan-node" data-tip="GitHub">
                   <img src="/assets/icons/github-white.svg" alt="GitHub" />
                 </div>

@@ -26,10 +26,28 @@ const QUICK_STATS = [
   { label: 'Foco', value: 'Confiabilidad operativa' },
 ]
 
+const DEVOPS_STACK_PRIORITY = [
+  'Docker',
+  'Kubernetes',
+  'GitHub Actions',
+  'Jenkins',
+  'Terraform',
+  'OpenTofu',
+  'AWS',
+  'Prometheus',
+  'Grafana',
+  'Nginx',
+  'Linux Server',
+  'Postman',
+]
+
 export function HomePage() {
   const prefersReducedMotion = useReducedMotion()
   const featuredProjects = PROJECTS_GRID.slice(0, 3)
-  const featuredStack = TOOLS_SECTIONS.flatMap((section) => section.cards).slice(0, 8)
+  const allStackCards = TOOLS_SECTIONS.flatMap((section) => section.cards)
+  const featuredStack = DEVOPS_STACK_PRIORITY.map((title) => allStackCards.find((tool) => tool.title === title))
+    .filter((tool): tool is (typeof allStackCards)[number] => Boolean(tool))
+    .slice(0, 8)
 
   return (
     <div className="space-y-20 pb-4">

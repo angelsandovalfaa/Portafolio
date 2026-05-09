@@ -92,6 +92,13 @@ export const TOOLS_STACK: ToolStackItem[] = [
     desc: 'Orquestación de pipelines para integración y entrega continua en distintos entornos.',
   },
   {
+    title: 'Postman',
+    icon: '/assets/icons/postman.svg',
+    href: 'https://www.postman.com/',
+    tags: ['API', 'Testing', 'Colaboración'],
+    desc: 'Pruebas, documentación y colaboración sobre APIs para acelerar integraciones y validar flujos.',
+  },
+  {
     title: 'Terraform',
     icon: '/assets/icons/terraform.svg',
     href: 'https://www.terraform.io/',

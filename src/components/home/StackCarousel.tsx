@@ -8,6 +8,7 @@ type StackIcon = {
 const COL_ONE: StackIcon[] = [
   { label: 'Slack', src: '/assets/icons/slack.svg' },
   { label: 'Jenkins', src: '/assets/icons/jenkins.svg' },
+  { label: 'Postman', src: '/assets/icons/postman.svg' },
   { label: 'GitHub', src: '/assets/icons/github-white.svg' },
   { label: 'Docker', src: '/assets/icons/docker.svg' },
 ]
