@@ -122,7 +122,7 @@ export function ContactDirectGrid() {
         </div>
       </a>
       <a
-        href="/assets/CV.DevOps-Angel-Sandoval.pdf"
+        href="https://drive.google.com/file/d/1hXgH8wzZCUyn1HsPd-o18yOdxLkAL3bK/view?usp=drive_link"
         target="_blank"
         rel="noreferrer"
         className="card w-inline-block contact-card-cv"
