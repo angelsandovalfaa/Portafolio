@@ -1,73 +1,41 @@
-# React + TypeScript + Vite
+# Portafolio DevOps
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+Sitio estático de portafolio basado en Webflow y personalizado para perfil DevOps.
 
-Currently, two official plugins are available:
+## Cómo ejecutarlo
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Oxc](https://oxc.rs)
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/)
+1. Entra a la carpeta del proyecto.
+2. Ejecuta `python3 -m http.server 8000`.
+3. Abre `http://localhost:8000`.
 
-## React Compiler
+## Estructura modular
 
-The React Compiler is not enabled on this template because of its impact on dev & build performances. To add it, see [this documentation](https://react.dev/learn/react-compiler/installation).
+### HTML
 
-## Expanding the ESLint configuration
+- `index.html`: portada principal (hero DevOps + integraciones animadas).
+- `about/index.html`: sección Sobre mí.
+- `projects/index.html`: listado de proyectos.
+- `tools/index.html`: herramientas.
+- `contact/index.html`: contacto.
+- `project/orbiter/index.html` y `project/pygio/index.html`: detalle de proyectos.
 
-If you are developing a production application, we recommend updating the configuration to enable type-aware lint rules:
+### CSS
 
-```js
-export default defineConfig([
-  globalIgnores(['dist']),
-  {
-    files: ['**/*.{ts,tsx}'],
-    extends: [
-      // Other configs...
+- `theme.css`: tema global del sitio (paleta, botones, sidebar, OpenToWork).
+- `assets/css/hero-devops.css`: estilos exclusivos del hero animado de portada.
+- `styles.css`: entry legacy para estilos de respaldo/experimentales.
 
-      // Remove tseslint.configs.recommended and replace with this
-      tseslint.configs.recommendedTypeChecked,
-      // Alternatively, use this for stricter rules
-      tseslint.configs.strictTypeChecked,
-      // Optionally, add this for stylistic rules
-      tseslint.configs.stylisticTypeChecked,
+### JavaScript
 
-      // Other configs...
-    ],
-    languageOptions: {
-      parserOptions: {
-        project: ['./tsconfig.node.json', './tsconfig.app.json'],
-        tsconfigRootDir: import.meta.dirname,
-      },
-      // other options...
-    },
-  },
-])
-```
+- `assets/js/common/faq-accordion.js`: lógica del acordeón FAQ.
+- `assets/js/common/preloader.js`: muestra/oculta preloader por sesión.
+- `assets/js/common/noise-overlay.js`: overlay de ruido opcional (desactivado por defecto).
+- `assets/js/index/devops-hero-init.js`: punto de entrada para scripts específicos de portada.
+- `script.js`: entry legacy para JS de respaldo/experimental.
 
-You can also install [eslint-plugin-react-x](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-x) and [eslint-plugin-react-dom](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-dom) for React-specific lint rules:
+## Notas de mantenimiento
 
-```js
-// eslint.config.js
-import reactX from 'eslint-plugin-react-x'
-import reactDom from 'eslint-plugin-react-dom'
-
-export default defineConfig([
-  globalIgnores(['dist']),
-  {
-    files: ['**/*.{ts,tsx}'],
-    extends: [
-      // Other configs...
-      // Enable lint rules for React
-      reactX.configs['recommended-typescript'],
-      // Enable lint rules for React DOM
-      reactDom.configs.recommended,
-    ],
-    languageOptions: {
-      parserOptions: {
-        project: ['./tsconfig.node.json', './tsconfig.app.json'],
-        tsconfigRootDir: import.meta.dirname,
-      },
-      // other options...
-    },
-  },
-])
-```
+- Los módulos comunes se cargan en todas las páginas para mantener comportamiento consistente.
+- El módulo de ruido está desactivado para priorizar rendimiento y fluidez en animaciones.
+- La personalización principal del hero está desacoplada en `assets/css/hero-devops.css`.
+# Portafolio
